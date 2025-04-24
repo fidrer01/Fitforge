@@ -1,0 +1,45 @@
+= Client
+
+A kliens példányokat eltároló entitás
+
+Az adatbázisban hozzátartozó tábla neve: client
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Integer (int)
+| I
+| elsődleges kulcs, auto-increment
+
+| name
+| String (varchar(30))
+| I
+| -
+
+| birthDate
+| Date (dateTime)
+| I
+| -
+
+| gender
+| Gender (varchar(30))
+| I
+| Gender enum értékeit veheti fel
+
+| phoneNumber
+| String (varchar(30))
+| I
+| -
+
+| loginId
+| Integer (int)
+| I
+| -
+
+|===
+
+link:../entities.adoc[Vissza]

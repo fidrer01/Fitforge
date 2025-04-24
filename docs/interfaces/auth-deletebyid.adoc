@@ -1,0 +1,66 @@
+= Felhasználó törlése Login Id alapján interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| A felhasználó törlése Login Id alapján.
+
+| Request method
+| DELETE
+
+| PathURL
+| /auth/delete/{id}
+
+| Params
+| id: A törlendő felhasználó Login Id-ja (integer).
+
+| response
+|
+{}
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi egy felhasználó törlését a Login Id-ja alapján. A végpont csak akkor működik, ha az adott felhasználó létezik az adatbázisban. A felhasználó törlése előtt a rendszer ellenőrzi a felhasználó szerepét, és a törlés során eltávolítja az adatokat a megfelelő táblákból.
+
+== Műveletek
+
+1) A kérésben a felhasználó Login Id-ja szerepel.
+
+2) A rendszer ellenőrzi, hogy létezik-e felhasználó a megadott Login Id alapján.
+
+3) Ha a felhasználó szerepe "CLIENT", a rendszer eltávolítja a felhasználó adatokat a "CLIENT" táblából, és visszaadja a törölt felhasználó adatainak olvasott verzióját.
+
+4) Ha a felhasználó szerepe "TRAINER", a rendszer eltávolítja a felhasználó adatokat a "TRAINER" táblából, és visszaadja a törölt felhasználó adatainak olvasott verzióját.
+
+5) Ha a felhasználó szerepe "ADMIN", a rendszer hozzáférés megtagadást dob (403-as hiba).
+
+[cols="3,2"]
+|===
+
+| Response paraméter | Érték
+
+| A válasz üzenete | A törölt felhasználó adatai JSON formátumban, vagy hozzáférési megtagadás hibaüzenet, ha az adminisztrátor próbál törölni.
+
+|===
+
+== Hibák
+
+A 404 LOGIN_NOT_FOUND hiba akkor fordul elő, ha a megadott Login Id-hoz nem található felhasználó.
+
+A 403 ACCESS_DENIED hiba akkor fordul elő, ha az adminisztrátor próbálja törölni saját fiókját.
+
+[cols="3,2"]
+|===
+
+| Hiba oka | Üzenet
+
+| Felhasználó nem található a megadott Login Id alapján
+| LOGIN_NOT_FOUND
+
+| Adminisztrátor nem törölheti saját fiókját
+| ACCESS_DENIED
+
+|===
+
+link:interfaces-auth.adoc[Vissza]

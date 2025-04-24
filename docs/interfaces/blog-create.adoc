@@ -1,0 +1,118 @@
+= Blog létrehozása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Új blog létrehozása.
+
+| Request method
+| POST
+
+| PathURL
+| /blog/
+
+| Params
+| Nincs paraméter.
+
+| request body
+|
+  {
+
+    "blogType",
+
+    "title",
+
+    "headerText",
+
+    "mainText",
+
+    "trainerId"
+
+  }
+
+| response
+|
+  {
+
+    "id",
+
+    "blogType",
+
+    "title",
+
+    "headerText",
+
+    "mainText",
+
+    "trainer": {
+      "id",
+      "name"
+    }
+
+  }
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi új blog létrehozását az adatbázisban.
+
+== Műveletek
+
+=== Validáció
+
+- A trainerId paraméternek érvényes edző azonosítót kell tartalmaznia.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott azonosítóhoz nem tartozik edző
+| TRAINER_NOT_FOUND
+| 404
+
+|===
+=== A folyamat lépései
+
+1) Az új blog adatainak mentése az adatbázisba.
+
+2) A blog sikeres létrehozása után a válasz tartalmazza a blog teljes adatainak részleteit, beleértve a létrehozott blogot és a hozzá tartozó edzőt.
+
+[cols="3,4"]
+|===
+
+| Request paraméter | Entitás mező
+
+| blogType | blog.blogType
+
+| title | blog.title
+
+| headerText | blog.headerText
+
+| mainText | blog.mainText
+
+| trainerId | trainer.id
+
+|===
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id | blog.id
+
+| blogType | blog.blogType
+
+| title | blog.title
+
+| headerText | blog.headerText
+
+| mainText | blog.mainText
+
+| trainer | blog.trainer (id, name)
+
+|===
+
+link:interfaces-blog.adoc[Vissza]

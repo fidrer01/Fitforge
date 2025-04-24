@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    width: 400px;
+    min-height: 400px;
+    max-height: 80vh;
+    padding: 15px;
+    margin: 70px auto 0;
+    border-radius: 15px;
+    position: relative;
+    overflow-y: auto;
+}
+
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.inputs > div {
+    margin: 8px 0;
+}
+
+.textFields {
+    width: 100%;
+}
+
+.submitButton {
+    margin: 15px 0;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        min-height: auto;
+        max-height: calc(100vh - 60px);
+        padding: 10px;
+    }
+
+    .inputs {
+        width: 100%;
+    }
+
+    .inputs > div {
+        margin: 6px 0;
+    }
+
+    .submitButton {
+        margin: 10px 0;
+    }
+
+    .error {
+        font-size: 10px;
+    }
+}
+
+
+@media (min-width: 769px) {
+    .container {
+        width: 450px;
+        padding: 20px;
+    }
+
+    .inputs {
+        width: 70%;
+    }
+}

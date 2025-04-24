@@ -1,0 +1,76 @@
+= Kliens eltávolítása programból interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Egy adott kliens eltávolítása egy megadott programból az azonosítók alapján.
+
+| Request method
+| DELETE
+
+| PathURL
+| /program/{programId}/clients/{clientId}
+
+| Params
+|
+  programId: A program azonosítója, amelyből el szeretnénk távolítani az ügyfelet. +
+  clientId: A kliens azonosítója, akit el szeretnénk távolítani a programból.
+
+| Request body
+| -
+
+| Response
+| "Client successfully removed." – sikeres eltávolítás esetén.
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi egy adott kliens eltávolítását egy programból a clientId és programId paraméterek alapján. A kapcsolatot mindkét oldalon törli az adatbázisból.
+
+== Műveletek
+
+=== Validáció
+
+- A programId alapján léteznie kell programnak az adatbázisban.
+- A clientId alapján léteznie kell kliensnek az adatbázisban.
+- Ha bármelyik entitás nem található, a rendszer hibaüzenetet küld vissza.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott program nem található
+| PROGRAM_NOT_FOUND
+| 404
+
+| A megadott kliens nem található
+| CLIENT_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) A program entitás lekérdezése a programId alapján.
+
+2) Az ügyfél entitás lekérdezése a clientId alapján.
+
+3) Az ügyfél eltávolítása a program ügyfél-listájából, és viszont.
+
+4) Az entitások mentése az adatbázisba.
+
+5) Szöveges visszajelzés "Client successfully removed." üzenettel.
+
+[cols="3,4"]
+|===
+
+| Response érték | Jelentés
+
+| "Client successfully removed."
+| Az ügyfél sikeresen el lett távolítva a programból.
+
+|===
+
+link:interfaces-pc.adoc[Vissza]

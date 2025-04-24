@@ -1,0 +1,129 @@
+= Edző regisztráció interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Új edző regisztrációja az alkalmazásban.
+
+| Request method
+| POST
+
+| PathURL
+| /auth/registerTrainer
+
+| Params
+| -
+
+| request body
+|
+{
+
+name,
+
+birthDate,
+
+gender,
+
+qualification,
+
+phoneNumber,
+
+email,
+
+password
+
+}
+
+| response
+|
+{
+
+id,
+
+name,
+
+birthDate,
+
+gender,
+
+qualification,
+
+phoneNumber,
+
+rating,
+
+login {
+loginId,
+email,
+role
+}
+
+}
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi, hogy új edzőként regisztráljunk az alkalmazásba. A megadott e-mail címnek egyedinek kell lennie. Sikeres regisztráció után az edző adatai visszaküldésre kerülnek.
+
+== Műveletek
+
+=== Validáció
+
+- Az e-mail cím nem lehet már használatban.
+- A beküldött adatoknak validnak kell lenniük (pl. megfelelő formátum, kötelező mezők).
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott e-mail cím már használatban van
+| EMAIL_TAKEN
+| 400
+
+|===
+
+=== A folyamat lépései
+
+1) Ellenőrzés, hogy az e-mail cím már szerepel-e az adatbázisban.
+
+2) Új Login objektum létrehozása és mentése titkosított jelszóval és "TRAINER" szerepkörrel.
+
+3) Szerepkörhöz tartozó jogosultságok hozzárendelése.
+
+4) Új Trainer entitás létrehozása és alapadatainak feltöltése.
+
+5) Az edző mentése az adatbázisba.
+
+6) Az elmentett edző visszaadása DTO formátumban.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| Az új edző azonosítója
+
+| name
+| Edző neve
+
+| birthDate
+| Születési dátum
+
+| gender
+| Neme (MALE vagy FEMALE)
+
+| phoneNumber
+| Telefonszám
+
+| rating
+| Értékelés
+
+| login
+| Bejelentkezési adatok (loginId, email, role)
+
+|===
+
+link:interfaces-auth.adoc[Vissza]

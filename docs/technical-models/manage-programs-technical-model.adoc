@@ -1,0 +1,211 @@
+= Programok kezelése - Technikai modell
+
+== Használati eset realizációk
+
+=== Programok listázása
+Használati eset azonosító: UC_P_List
+
+A felhasználó a
+
+- fő menüsorban
+
+- a "Programok" gombra kattintva
+
+Az oldal betöltődés részeként meghívja a
+
+- GET /program azonosítójú Programok listázása elnevezésű interfészt az alábbi mapping megvalósításával:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+| - | -
+|===
+
+A response visszatér az edzésprogramok listájával. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|ProgramListItem[].id | Nem jelenik meg. A frontend a megtekintéshez használja.
+|ProgramListItem[].coachName | Edző neve oszlop |
+ProgramListItem[].start | Kezdés oszlop |
+ProgramListItem[].end | Befejezés oszlop |
+ProgramListItem[].price | Ár oszlop |
+ProgramListItem[].capacity | Kapacitás oszlop |
+ProgramListItem[].type | Típus oszlop |
+ProgramListItem[].status | Státusz oszlop
+|===
+
+=== Program megtekintése
+Használati eset azonosító: UC_P_Read
+
+A felhasználó a
+
+- Programok listájában
+
+- egy program sorára kattintva
+
+A rendszer meghívja a
+
+- GET /program/{id} azonosítójú Program megtekintése interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A frontend által ismert program azonosító
+|===
+
+A response visszatér a program részletes adataival:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|id |Nem jelenik meg
+|coachName | Edző neve címke
+|start | Kezdés címke
+|end | Befejezés címke
+|price | Ár címke
+|capacity | Kapacitás címke
+|type | Típus címke
+|status | Státusz címke
+|===
+
+=== Program létrehozása
+Használati eset azonosító: UC_P_Create
+
+A felhasználó a
+
+- "Program létrehozása" gombra kattintva
+
+- kitölti az űrlapot, majd a "Mentés" gombra kattint
+
+A rendszer meghívja a
+
+- POST /program azonosítójú Program létrehozása interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|coachId | Edző azonosítója
+|start | Kezdés dátuma
+|end | Befejezés dátuma
+|price | Ár |capacity
+| Kapacitás |type
+| Típus |status
+| Státusz
+|===
+
+A response visszatér az új program azonosítójával és metaadataival.
+
+=== Program módosítása
+Használati eset azonosító: UC_P_Update
+
+A felhasználó a
+
+- Program szerkesztése felületen módosítja a mezőket
+
+- a "Mentés" gombra kattint
+
+A rendszer meghívja a
+
+- PATCH /program/{id} azonosítójú Program módosítása interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id | Módosítandó program azonosító
+|selected | A módosítandó mező neve
+|value | Az új érték
+|===
+
+A response visszatér a frissített adatokkal.
+
+=== Program törlése
+Használati eset azonosító: UC_P_Delete
+
+A felhasználó a
+
+- Program szerkesztés nézetben
+
+- a "Törlés" gombra kattint
+
+A rendszer meghívja a
+
+- DELETE /program/{id} azonosítójú Program törlése interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id | A törlendő program azonosítója
+|===
+
+=== Kliensek hozzárendelése programhoz
+Használati eset azonosító: UC_P_AddClient
+
+A felhasználó a
+
+- Program részletes felületén
+
+- a "Jelentkezés" funkcióval választ klienst
+
+A rendszer meghívja a
+
+- POST /program/{programId}/client azonosítójú Kliens hozzárendelése programhoz interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|programId | A program azonosítója
+|clientId | A hozzárendelni kívánt kliens azonosítója
+|===
+
+=== Kliens eltávolítása programból
+Használati eset azonosító: UC_P_RemoveClient
+
+A felhasználó a
+
+- Program részletes nézetén
+
+- az adott kliens sorában az "Eltávolítás" gombra kattint
+
+A rendszer meghívja a
+
+- DELETE /program/{programId}/client/{clientId} azonosítójú Kliens eltávolítása programból interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|programId | Program azonosító |clientId | Kliens azonosító
+|===
+
+=== Kliens volt-e programon
+Használati eset azonosító: UC_P_WasOnProgram
+
+A rendszer egy automatikus vagy manuális lekérdezés alapján meghívja a
+
+- GET /program/{programId}/client/{clientId}/was-on azonosítójú Kliens részvett-e programon interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|programId | Program azonosító |clientId | Kliens azonosító
+|===
+
+A response egy logikai értéket ad vissza (true/false)
+
+== Érintett komponensek
+
+Frontend: vizsgaremekFront ← → Backend: fitness
+
+link:../technical-models.adoc[Vissza]
+

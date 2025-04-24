@@ -1,0 +1,20 @@
+= Edző interfészek
+
+* link:trainer-list.adoc[Edzők listázása]
+
+* link:trainer-picture-update.adoc[Edző képének frissítése]
+
+* link:trainer-rate.adoc[Edző értékelése]
+
+* link:trainer-read.adoc[Edző lekérdezése]
+
+* link:trainer-read-average-rating.adoc[Edző átlag értékelésének lekérdezése]
+
+* link:trainer-read-best-trainers.adoc[Legjobban értékelt edzők lekérdezése]
+
+* link:trainer-read-picture.adoc[Edző képének lekérdezése]
+
+* link:trainer-update.adoc[Edző módosítása]
+
+
+link:../interfaces.adoc[Vissza]

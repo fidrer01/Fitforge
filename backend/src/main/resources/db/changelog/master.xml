@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+        http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet id="0" author="admin">
+    </changeSet>
+
+    <include file="create_table_gender.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_gender.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_qualification.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_qualification.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_login.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_login.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_permission.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_permission.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_allocate.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_allocate.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_file_entity.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_trainer.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_trainer.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_client.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_client.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_rating.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_rating.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_programstatus.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_programstatus.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_programtype.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_programtype.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_program.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_program.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_blog.sql" relativeToChangelogFile="true"/>
+    <include file="insert_into_blog.sql" relativeToChangelogFile="true"/>
+
+    <include file="create_table_program_client.sql" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

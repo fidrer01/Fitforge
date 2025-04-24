@@ -1,0 +1,65 @@
+= Programra regisztrált ügyfelek számának lekérdezése interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Egy adott programhoz regisztrált ügyfelek számának lekérdezése az azonosító alapján.
+
+| Request method
+| GET
+
+| PathURL
+| /program/{id}/client-count
+
+| Params
+|
+  id: A program azonosítója, amelyhez tartozó ügyfélszámot le szeretnénk kérdezni.
+
+| Request body
+| -
+
+| Response
+| Az adott programhoz regisztrált ügyfelek száma egész számként (integer).
+
+|===
+
+== Leírás
+Ez a végpont visszaadja, hogy hány ügyfél csatlakozott (regisztrált) egy adott programhoz a program azonosítója alapján. A választ egy egész szám (integer) reprezentálja.
+
+== Műveletek
+
+=== Validáció
+
+- A program létezését a programId alapján nem ellenőrzi a szolgáltatás, de a lekérdezés csak létező program esetén ad értelmes eredményt (0 ha nincs találat).
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| (Nem definiált, mivel nem dob kivételt, ha a program nem létezik)
+| -
+| -
+
+|===
+
+=== A folyamat lépései
+
+1) A programRepository meghívja a countClientsByProgramId() metódust a programId paraméterrel.
+
+2) A JPA lekérdezés megszámolja a programhoz csatlakozott ügyfeleket.
+
+3) Az eredmény visszaadásra kerül ResponseEntity<Integer> formájában.
+
+[cols="3,4"]
+|===
+
+| Response érték | Jelentés
+
+| integer
+| A programhoz regisztrált ügyfelek száma
+
+|===
+
+link:interfaces-pc.adoc[Vissza]

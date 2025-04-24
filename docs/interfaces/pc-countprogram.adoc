@@ -1,0 +1,65 @@
+= Ügyfél által regisztrált programok számának lekérdezése interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Egy adott ügyfél által regisztrált programok számának lekérdezése az azonosító alapján.
+
+| Request method
+| GET
+
+| PathURL
+| /client/{id}/program-count
+
+| Params
+|
+  `id`: Az ügyfél azonosítója, akinek a program regisztrációit szeretnénk számolni.
+
+| Request body
+| -
+
+| Response
+| Az adott ügyfélhez tartozó regisztrált programok száma egész számként (integer).
+
+|===
+
+== Leírás
+Ez a végpont visszaadja, hogy hány programra regisztrált egy adott ügyfél. Az érték egy egész szám, amely reprezentálja a regisztrált programok számát.
+
+== Műveletek
+
+=== Validáció
+
+-
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| (Nem definiált, mivel nem történik kivételkezelés)
+| -
+| -
+
+|===
+
+=== A folyamat lépései
+
+1) Meghívódik a clientRepository.countProgramsByClientId() metódus a megadott id paraméterrel.
+
+2) A lekérdezés megszámolja, hány programhoz tartozik az adott ügyfél.
+
+3) Az eredmény visszaadásra kerül ResponseEntity<Integer> formában.
+
+[cols="3,4"]
+|===
+
+| Response érték | Jelentés
+
+| integer
+| Az ügyfél által regisztrált programok száma
+
+|===
+
+link:interfaces-pc.adoc[Vissza]

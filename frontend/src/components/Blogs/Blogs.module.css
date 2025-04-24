@@ -1,0 +1,242 @@
+.blogs {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+.contentWrapper {
+    width: 100%;
+    padding-top: clamp(60px, 10vh, 80px);
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 40px);
+    min-height: 90vh;
+    box-sizing: border-box;
+}
+
+.blogGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(20px, 3vw, 30px);
+    justify-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cardWrapper {
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.card {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border-radius: 16px;
+    background-color: #ffffff;
+    border: none;
+}
+
+.card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.card img {
+    object-fit: cover;
+    width: 100%;
+    height: 220px;
+    border-radius: 16px 16px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
+
+.blogTitle {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 8px 0;
+    line-height: 1.3;
+    min-height: 44px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 16px;
+    transition: color 0.3s ease;
+}
+
+.blogTitle:hover {
+    color: #0288d1;
+}
+
+.cardFooter {
+    background-color: #fafafa;
+    border-radius: 0 0 16px 16px;
+    padding: 8px 16px;
+}
+
+.blogType {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 500;
+    color: #616161;
+    text-transform: uppercase;
+}
+
+.trainerActions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.trainerButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.trainerButtons > * {
+    cursor: pointer;
+    padding: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: #616161;
+    border-radius: 50%;
+}
+
+.trainerButtons > *:hover {
+    background-color: rgba(2, 136, 209, 0.1);
+    transform: scale(1.1);
+    color: #0288d1;
+}
+
+.buttons {
+    position: fixed;
+    bottom: clamp(20px, 5vw, 40px);
+    right: clamp(20px, 5vw, 40px);
+    z-index: 10;
+}
+
+.fabButton {
+    width: clamp(48px, 8vw, 60px) !important;
+    height: clamp(48px, 8vw, 60px) !important;
+    background: linear-gradient(45deg, #0288d1, #03a9f4) !important;
+    box-shadow: 0 6px 15px rgba(2, 136, 209, 0.3) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.fabButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(2, 136, 209, 0.5) !important;
+}
+
+.blogError {
+    margin-top: clamp(40px, 10vh, 80px);
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-weight: 500;
+    color: #757575;
+    text-align: center;
+}
+
+/* Reszponzív dizájn */
+@media (max-width: 960px) {
+    .container {
+        padding: clamp(15px, 3vw, 30px);
+    }
+
+    .blogGrid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 720px) {
+    .contentWrapper {
+        padding-top: 60px;
+    }
+
+    .container {
+        padding: 15px;
+        margin: 0;
+        width: 100%;
+    }
+
+    .blogGrid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0;
+    }
+
+    .cardWrapper {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .card {
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .card img {
+        height: 200px;
+    }
+
+    .blogTitle {
+        font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+        min-height: 40px;
+        margin: 6px 0;
+        padding: 0 12px;
+    }
+
+    .cardFooter {
+        padding: 6px 12px;
+    }
+
+    .blogType {
+        font-size: clamp(0.75rem, 2vw, 0.875rem);
+    }
+
+    .trainerButtons {
+        gap: 8px;
+    }
+
+    .buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .fabButton {
+        width: 48px !important;
+        height: 48px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .blogError {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .card img {
+        height: 180px;
+    }
+
+    .blogTitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        min-height: 36px;
+    }
+
+    .trainerButtons > * {
+        padding: 4px;
+    }
+}

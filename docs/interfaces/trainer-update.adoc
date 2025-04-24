@@ -1,0 +1,135 @@
+= Edző módosítása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Egy id alapján kiválasztott edző adatainak módosítása
+
+
+| Request method
+| PATCH
+
+| PathURL
+| /trainer/{id}
+
+| Params
+| id: A módosítani kívánt edző azonosítója
+
+| request body
+|
+    {
+
+      selected,
+
+      value
+
+    }
+
+| response
+|
+  {
+
+    id,
+
+    name,
+
+    birthDate,
+
+    gender,
+
+    qualification,
+
+    phoneNumber,
+
+    rating,
+
+    login {
+        loginId,
+        email,
+        role
+    }
+
+  }
+
+|===
+
+== Leírás
+Kiválasztott edző metaadatainak módosítása az adatbázisban.
+
+== Műveletek
+
+=== Validáció
+
+- Az id pathVariable alapján léteznie kell trainer entitásnak az adatbázisban.
+
+Validációs hiba esetén a folyamat leáll, a response hibaüzenetet küld.
+
+[cols="4,2,1"]
+|===
+
+|Hiba oka |Üzenet |Status code
+
+|Az azonosítóhoz nem tartozik edző az adatbázisban
+|TRAINER_NOT_FOUND
+|404
+
+|===
+
+=== A folyamat lépései
+
+1) A Trainer példány módosítása az adatbázisban, ahol trainer.id == pathVariable: id.
+
+[cols="3,4"]
+|===
+
+|Request paraméter |Entitás mező
+
+|selected: NAME
+|trainer.name
+
+|selected: BIRTH_DATE
+|trainer.birthDate
+
+|selected: QUALIFICATION
+|trainer.qualification
+
+|selected: PHONE_NUMBER
+|trainer.phoneNumber
+
+|===
+
+2) A response összeállítása és küldése.
+
+[cols="3,4"]
+|===
+
+|Response paraméter |Érték
+
+|id
+|trainer.id
+
+|name
+|trainer.name
+
+|birthDate
+|trainer.birthDate
+
+|gender
+|trainer.gender
+
+|qualification
+|trainer.qualification
+
+|phoneNumber
+|trainer.phoneNumber
+
+|rating
+|trainer.rating
+
+|login
+|trainer.login (loginId, email, role)
+
+|===
+
+link:interfaces-trainer.adoc[Vissza]

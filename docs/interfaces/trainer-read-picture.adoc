@@ -1,0 +1,87 @@
+= Edző képének lekérdezése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Az adott edző képének lekérdezése
+
+| Request method
+| GET
+
+| PathURL
+| /trainer/picture/{id}
+
+| Params
+| id: Az edző egyedi azonosítója
+
+| request body
+| -
+
+| response
+|
+
+{
+
+string (base64 encoded image)
+
+}
+
+|===
+
+== Leírás
+Az edző képének lekérdezése az edző egyedi azonosítója alapján.
+
+== Műveletek
+
+=== Validáció
+
+- Az id pathVariable alapján léteznie kell trainer entitásnak az adatbázisban.
+- Ha a trainer nem rendelkezik képpel, a rendszer hibaüzenetet küld.
+
+Validációs hiba esetén a folyamat leáll, a response hibaüzenetet küld.
+
+[cols="4,2,1"]
+|===
+
+|Hiba oka |Üzenet |Status code
+
+|Az azonosítóhoz nem tartozik edző az adatbázisban
+|TRAINER_NOT_FOUND
+|404
+
+|A kiválasztott edzőnek nincs képe
+|PICTURE_NOT_FOUND
+|404
+
+|===
+
+=== A folyamat lépései
+
+1) Az edző lekérdezése az adatbázisból.
+
+2) Ha az edzőnek van képe, az adatokat base64 formátumban visszaküldi.
+
+[cols="3,4"]
+|===
+
+|Request paraméter |Entitás mező
+
+|id
+|trainer.id
+
+|===
+
+2) A response összeállítása és küldése.
+
+[cols="3,4"]
+|===
+
+|Response paraméter |Érték
+
+|képek (base64 kódolású adat)
+|fileEntity.data
+
+|===
+
+link:interfaces-trainer.adoc[Vissza]

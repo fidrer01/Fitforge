@@ -1,0 +1,172 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    box-sizing: border-box;
+    padding: clamp(20px, 4vw, 40px);
+}
+
+.container {
+    background: #ffffff;
+    padding: clamp(20px, 4vw, 40px);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+.title {
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+}
+
+.form {
+    width: 100%;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.email,
+.password {
+    padding: clamp(12px, 2vw, 16px);
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email:focus,
+.password:focus {
+    outline: none;
+    border-color: #0288d1;
+    box-shadow: 0 0 0 3px rgba(2, 136, 209, 0.1);
+}
+
+.error {
+    color: #d32f2f;
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    margin-top: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.closeButton,
+.sendButton {
+    flex: 1;
+    padding: clamp(10px, 2vw, 14px);
+    border-radius: 8px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.closeButton {
+    background: linear-gradient(45deg, #ed3131, #ff5252) !important;
+    box-shadow: 0 4px 12px rgba(237, 49, 49, 0.3) !important;
+}
+
+.closeButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(237, 49, 49, 0.4) !important;
+}
+
+.sendButton {
+    background: linear-gradient(45deg, #0288d1, #03a9f4) !important;
+    box-shadow: 0 4px 12px rgba(2, 136, 209, 0.3) !important;
+}
+
+.sendButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(2, 136, 209, 0.4) !important;
+}
+
+/* Reszponzív dizájn */
+@media (max-width: 720px) {
+    .login {
+        padding: 15px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .title {
+        font-size: clamp(1.25rem, 4vw, 2rem);
+        margin-bottom: 20px;
+    }
+
+    .inputs {
+        gap: 15px;
+    }
+
+    .email,
+    .password {
+        padding: 12px;
+        font-size: clamp(0.75rem, 2vw, 0.875rem);
+    }
+
+    .error {
+        font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+    }
+
+    .buttons {
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .closeButton,
+    .sendButton {
+        padding: 10px;
+        font-size: clamp(0.75rem, 2vw, 0.875rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .email,
+    .password {
+        padding: 10px;
+        font-size: clamp(0.625rem, 2vw, 0.75rem);
+    }
+
+    .closeButton,
+    .sendButton {
+        padding: 8px;
+        font-size: clamp(0.625rem, 2vw, 0.75rem);
+    }
+}

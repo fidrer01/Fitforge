@@ -1,0 +1,60 @@
+= Trainer
+
+Az edző példányokat eltároló entitás
+
+Az adatbázisban hozzátartozó tábla neve: trainer
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Integer (int)
+| I
+| elsődleges kulcs, auto-increment
+
+| name
+| String (varchar(30))
+| I
+| -
+
+| birthDate
+| Date (dateTime)
+| I
+| -
+
+| gender (gender)
+| Gender (varchar(30))
+| I
+| Gender enum értékeit veheti fel
+
+| qualification (qualification)
+| Qualification(varchar(30))
+| I
+| Qualification enum értékeit veheti fel
+
+| phoneNumber
+| String (varchar(30))
+| I
+| -
+
+| rating
+| Double (decimal(3,2))
+| I
+| Az értéke 1 és 5 között lehet
+
+| loginId
+| Integer (int)
+| I
+| -
+
+| fileId
+| Integer (bigint)
+| N
+| -
+
+|===
+
+link:../entities.adoc[Vissza]

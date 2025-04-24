@@ -1,0 +1,175 @@
+= Edzők kezelése - Technikai modell
+
+== Használati eset realizációk
+
+=== Edzők listázása
+Használati eset azonosító: UC_T_List
+
+A felhasználó a
+
+- főmenüsorban
+
+- az „Edzők” gombra kattintva
+
+Az oldal betöltődésének részeként meghívja a
+
+- GET /trainer azonosítójú Edzők listázása nevű interfészt az alábbi mapping megvalósításával:
+
+[cols="1,1"]
+|===
+
+|Interfész input paraméter	|érték
+|-
+|-
+|===
+
+A response visszatér az edzők listájával. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|TrainerListItem[].id |Nem jelenik meg. A frontend a megtekintéshez használja.
+|TrainerListItem[].name |Edző neve oszlop
+|TrainerListItem[].birthDate |Edző születési dátuma oszlop
+|TrainerListItem[].gender |Edző neme oszlop
+Felhasználás:
+MALE → Male
+FEMALE → Female
+OTHER → Other
+|TrainerListItem[].qualification |Edző végzettsége oszlop
+|TrainerListItem[].phoneNumber |Edző telefonszáma oszlop
+|TrainerListItem[].rating |Értékelés oszlop
+|===
+
+=== Edző megtekintése
+Használati eset azonosító: UC_T_Read
+
+A felhasználó az
+
+- edzők listájából
+
+- egy adott edző nevére kattintva
+
+Az edző profil oldalra jut, ahol az oldal betöltődésekor meghívja a
+
+- GET /trainer/{id} azonosítójú Edző megtekintése interfészt.
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+|id |A frontend által ismert edző azonosító
+|===
+
+A response visszatér az edző részletes metaadataival. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|id |Nem jelenik meg
+|name |Edző neve címke
+|birthDate |Edző születési dátuma címke
+|gender |Edző neme címke
+MALE → Male
+FEMALE → Female
+OTHER → Other
+|qualification |Edző végzettsége címke
+|phoneNumber |Edző telefonszáma címke
+|rating |Értékelés címke
+|===
+
+=== Edző módosítása
+Használati eset azonosító: UC_T_Patch
+
+A felhasználó az
+
+- edző szerkesztése felületen
+
+- a „Mentés” gombra kattintva
+
+A rendszer meghívja a
+
+- PATCH /trainer/{id} azonosítójú Edző módosítása interfészt az alábbi mapping megvalósításával:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A frontend által ismert edző azonosító
+|selected |A módosítani kívánt mező neve (pl. "name", "birthDate", "qualification", "phoneNumber")
+|value |Az új érték
+|===
+
+A response visszatér a módosított edző metaadataival. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|id |Nem jelenik meg
+|name |Edző neve címke
+|birthDate |Edző születési dátuma címke
+|gender |Edző neme címke
+|qualification |Edző végzettsége címke
+|phoneNumber |Edző telefonszáma címke
+|rating |Értékelés címke
+|===
+
+=== Edző értékelése
+Használati eset azonosító: UC_T_Rate
+
+A felhasználó az
+
+- értékelés nézetben
+
+- az „Értékelés hozzáadása” gombra kattintva
+
+A rendszer meghívja a
+
+- POST /trainer/{id}/rating azonosítójú Értékelés hozzáadása interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A frontend által ismert edző azonosító
+|value |Az értékelés értéke (1–5 közötti egész szám)
+|===
+
+A response visszatér a frissített értékeléssel. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+|rating |Frissített átlagos értékelés megjelenítése
+|===
+
+=== Edző kép feltöltése
+Használati eset azonosító: UC_T_UploadImage
+
+A felhasználó a
+
+- kép feltöltő felületen
+
+- fájl kiválasztása és mentés gombra kattintva
+
+A rendszer meghívja a
+
+- POST /trainer/{id}/image azonosítójú Edző kép feltöltése interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A frontend által ismert edző azonosító
+|image |A feltölteni kívánt kép fájlja
+|===
+
+A response visszatér a feltöltött kép URL-jével (vagy frissíti az edző profilképét a megtekintéshez).
+
+== Érintett komponensek
+
+Frontend: vizsgaremekFront ← → Backend: fitness
+
+link:../technical-models.adoc[Vissza]

@@ -1,0 +1,30 @@
+= Rating
+
+Az edzőkhöz tartozó értékeléseket eltároló entitás
+
+Az adatbázisban hozzátartozó tábla neve: rating
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Integer (int)
+| I
+| elsődleges kulcs, auto-increment
+
+| trainerId
+| Integer (int)
+| I
+| -
+
+| score
+| Integer (int)
+| I
+| Az értéke 1 és 5 között lehet
+
+|===
+
+link:../entities.adoc[Vissza]

@@ -1,0 +1,55 @@
+= Program
+
+A program példányokat eltároló entitás
+
+Az adatbázisban hozzátartozó tábla neve: program
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Integer (int)
+| I
+| elsődleges kulcs, auto-increment
+
+| trainerId
+| Integer (int)
+| I
+| -
+
+| startTime
+| DateTime (datetime)
+| I
+| -
+
+| endTime
+| DateTime (datetime)
+| I
+| -
+
+| price
+| Integer (int)
+| I
+| -
+
+| capacity
+| Integer (int)
+| I
+| -
+
+| programType
+| String (varchar(30))
+| I
+| ProgramType enum értékeit veheti fel
+
+| status
+| String (varchar(30))
+| I
+| ProgramStatus enum értékeit veheti fel
+
+|===
+
+link:../entities.adoc[Vissza]

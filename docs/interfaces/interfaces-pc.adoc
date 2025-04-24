@@ -1,0 +1,18 @@
+= Program-Kliens interfészek
+
+* link:pc-addclient.adoc[Kliens programhoz való rendelése]
+
+* link:pc-clientcount.adoc[Programra regisztrált ügyfelek számának lekérdezése]
+
+* link:pc-countprogram.adoc[Ügyfél által regisztrált programok számának lekérdezése]
+
+* link:pc-deleteclient.adoc[Kliens eltávolítása programból]
+
+* link:pc-getif.adoc[Kliens programon való részvételének lekérdezése]
+
+* link:pc-list.adoc[Programhoz csatlakozott kliensek listázása]
+
+* link:pc-listprogram.adoc[Klienshez kapcsolódó programok listázása]
+
+
+link:../interfaces.adoc[Vissza]

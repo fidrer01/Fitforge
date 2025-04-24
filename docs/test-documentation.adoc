@@ -1,0 +1,72 @@
+= Tesztelési Dokumentáció
+
+== Frontend tesztelés
+
+=== Bevezetés
+Ez a dokumentáció a LandingPage és Blogs React komponensek egységtesztjeit foglalja össze táblázatos formában. A tesztek a @testing-library/react és jest eszközökkel készültek.
+
+
+=== LandingPage komponens tesztek
+
+[cols="2,3,3",options="header"]
+|===
+|Teszt neve | Leírás | Elvárt eredmény
+|Navbar és banner renderelése | A komponens rendereli a mockolt Navbar-t és a banner szövegeit. | "Mocked Navbar", "Eddz velünk!", "Hugo Girard" szövegek megjelennek.
+|Regisztrációs gomb kijelentkezett állapotban | Megjelenik a "Regisztrálás" gomb, és kattintásra navigál. | Gomb látható, kattintás után `/registration` útvonalra navigál.
+|Regisztrációs gomb bejelentkezett állapotban | A gomb nem jelenik meg, ha a felhasználó be van jelentkezve. | "Regisztrálás" gomb nem látható.
+|===
+
+=== Blogs komponens tesztek
+
+[cols="2,3,3",options="header"]
+|===
+|Teszt neve | Leírás | Elvárt eredmény
+|Navbar és üres üzenet renderelése | Üres bloglista esetén a Navbar és üzenet megjelenik. | "Mocked Navbar" és "Jelenleg egy blog sem elérhető" látható.
+|Blogok renderelése | Blogok megjelennek, ha a kontextusban elérhetők. | "Test Blog" és "Edzés" szövegek láthatóak.
+|Létrehozás gomb edzőnél | Edző esetén a létrehozás gomb látható és működik. | "add" gomb megjelenik, kattintásra a modal megnyílik.
+|Létrehozás gomb nem edzőnél | Nem edző esetén a gomb nem látható. | "add" gomb nem jelenik meg.
+|Szerkesztés/törlés ikonok edzőnél | Edző esetén az ikonok láthatóak. | "edit" és "delete" ikonok megjelennek.
+|Szerkesztés/törlés ikonok nem edzőnél | Nem edző esetén az ikonok nem láthatóak. | "edit" és "delete" ikonok nem jelennek meg.
+|Blog részletek navigáció | Blog kártyára kattintás navigál a részletekre. | `/openedBlog` útvonalra navigál a blog adataival.
+|Szerkesztési modal megnyitása | Szerkesztés ikonra kattintás megnyitja a modalt. | `EditBlog` modal látható.
+|Törlési modal megnyitása | Törlés ikonra kattintás megnyitja a megerősítést. | `Confirmation` modal látható.
+|===
+
+=== Összegzés
+A táblázatok a LandingPage és Blogs komponensek alapvető funkcionalitásait fedik le, beleértve a renderelést, felhasználói állapotokat és navigációt.
+
+== Backend tesztelés
+
+=== Bevezetés
+A backend tesztelés a fitness API végpontok funkcionalitását ellenőrzi JMeter-rel. A tesztek két fő területet fednek le: publikus végpontokat és hitelesítési folyamatokat.
+
+=== Publikus végpontok tesztei
+
+[cols="2,3,3",options="header"]
+|===
+|Teszt neve | Leírás | Elvárt eredmény
+|Get Trainer | Létező edző lekérése ID alapján | Lekérdezett edző adatai
+|Get not existing Trainer | Nem létező edző lekérése | Trainer not found exception 404-es hibakóddal
+|Get Program | Létező edzésprogram lekérése | Lekérdezett program információi
+|Get not existing Program | Nem létező program lekérése | Program not found exception 404-es hibakóddal
+|===
+
+=== Hitelesítési tesztek
+
+[cols="2,3,3",options="header"]
+|===
+|Teszt neve | Leírás | Elvárt eredmény
+|Register as Trainer with invalid email | Regisztráció érvénytelen email címmel | Bad request exception dobása 400-as hibakóddal
+|Register as Trainer | Sikeres regisztráció érvényes adatokkal | Trainer adatai 201-es (CREATED) válaszkóddal
+|Login with invalid credentials | Bejelentkezés hibás jelszóval | Unauthorized exception dobása 401-es hibakóddal
+|Login with created Trainer | Sikeres bejelentkezés | Felhasználó loginja és header-ben a jwt token
+|Get created Trainer's User details | Bejelentkezett felhasználó adatainak lekérése | Bejelentkezett felhasználó adatai
+|Delete created Trainer | Regisztrált felhasználó törlése | A törölt felhasználó adatai 200-as válaszkóddal
+|===
+
+
+=== Összegzés
+A táblázatok a backend API alapvető funkcionalitásait fedik le, beleértve a CRUD műveleteket, hibakezelést és hitelesítési folyamatokat.
+
+
+link:../application-documentation.adoc[Vissza]

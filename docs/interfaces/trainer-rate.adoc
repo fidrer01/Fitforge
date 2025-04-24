@@ -1,0 +1,76 @@
+= Edző értékelése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Értékelés hozzáadása egy id alapján kiválasztott edzőhöz
+
+| Request method
+| POST
+
+| PathURL
+| /trainer/{id}/rating
+
+| Params
+| id: Az edző egyedi azonosítója
+
+| request body
+|
+    {
+
+      "score": 0
+
+    }
+
+| response
+| -
+
+|===
+
+== Leírás
+Az edző értékelése az id alapján. Az értékelést hozzáadjuk az edzőhöz, majd frissítjük az edző átlagos értékelését.
+
+== Műveletek
+
+=== Validáció
+
+- Az id pathVariable alapján léteznie kell trainer entitásnak az adatbázisban.
+- A score értéknek valid számnak kell lennie.
+
+Validációs hiba esetén a folyamat leáll, a response hibaüzenetet küld
+
+[cols="4,2,1"]
+|===
+
+|Hiba oka |Üzenet |Status code
+
+|Az azonosítóhoz nem tartozik edző az adatbázisban
+|TRAINER_NOT_FOUND
+|404
+
+|A score nem érvényes
+|INVALID_SCORE
+|400
+
+|===
+
+=== A folyamat lépései
+
+1) Az edző rating mezőjének módosítása a score értékének megfelelően.
+
+2) Az edző átlagos értékelésének frissítése.
+
+3) A response összeállítása és küldése.
+
+[col="1,1"]
+|===
+
+|Request paraméter | entitás mező
+
+|score
+|trainer.rating
+
+|===
+
+link:interfaces-trainer.adoc[Vissza]

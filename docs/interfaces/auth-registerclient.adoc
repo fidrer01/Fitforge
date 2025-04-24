@@ -1,0 +1,120 @@
+= Kliens regisztráció interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Új kliens regisztrációja az alkalmazásban.
+
+| Request method
+| POST
+
+| PathURL
+| /auth/registerClient
+
+| Params
+| -
+
+| request body
+|
+{
+
+name,
+
+birthDate,
+
+gender,
+
+phone,
+
+email,
+
+password
+
+}
+
+| response
+|
+{
+
+id,
+
+name,
+
+birthDate,
+
+gender,
+
+phoneNumber,
+
+login {
+loginId,
+email,
+role
+}
+
+}
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi, hogy új kliensként regisztráljunk az alkalmazásban. A megadott e-mail címnek egyedinek kell lennie. Sikeres regisztráció után az ügyfél adatai visszaküldésre kerülnek.
+
+== Műveletek
+
+=== Validáció
+
+- Az e-mail cím nem lehet már használatban.
+- A beküldött adatoknak validnak kell lenniük (pl. megfelelő formátum, kötelező mezők).
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott e-mail cím már használatban van
+| EMAIL_TAKEN
+| 400
+
+|===
+
+=== A folyamat lépései
+
+1) Ellenőrzés, hogy az e-mail cím már szerepel-e az adatbázisban.
+
+2) Új Login objektum létrehozása és mentése titkosított jelszóval és "CLIENT" szerepkörrel.
+
+3) Szerepkörhöz tartozó jogosultságok hozzárendelése.
+
+4) Új Client entitás létrehozása és alapadatainak feltöltése.
+
+5) Az ügyfél mentése az adatbázisba.
+
+6) Az elmentett ügyfél visszaadása DTO formátumban.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| Az új ügyfél azonosítója
+
+| name
+| Ügyfél neve
+
+| birthDate
+| Születési dátum
+
+| gender
+| Neme (MALE vagy FEMALE)
+
+| phoneNumber
+| Telefonszám
+
+| login
+| Bejelentkezési adatok (loginId, email, role)
+
+|===
+
+link:interfaces-auth.adoc[Vissza]

@@ -1,0 +1,157 @@
+= Program módosítása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Egy meglévő program adatainak módosítása az azonosító alapján.
+
+| Request method
+| PUT
+
+| PathURL
+| /program/{id}
+
+| Params
+| id: A módosítani kívánt program azonosítója.
+
+| request body
+|
+  {
+
+    trainerId,
+
+    startTime,
+
+    endTime,
+
+    price,
+
+    capacity,
+
+    programType
+
+  }
+
+| response
+|
+  {
+
+    id,
+
+    trainer {
+      id,
+      name
+    },
+
+    startTime,
+
+    endTime,
+
+    price,
+
+    capacity,
+
+    programType,
+
+    status
+
+  }
+
+|===
+
+== Leírás
+A végpont lehetővé teszi egy meglévő program teljes adatainak frissítését az azonosító alapján. A programhoz tartozó edző azonosítója is módosítható.
+
+== Műveletek
+
+=== Validáció
+
+- Az id paraméterrel megadott programnak léteznie kell az adatbázisban.
+- A request body-ban szereplő trainerId-hoz tartoznia kell egy érvényes edző entitásnak.
+- Hibás vagy hiányzó adatok esetén a rendszer hibaüzenetet küld.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott azonosítóhoz nem tartozik program az adatbázisban
+| PROGRAM_NOT_FOUND
+| 404
+
+| A megadott edző azonosító nem található
+| TRAINER_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) A program létezésének ellenőrzése az adatbázisban: program.id == pathVariable: id.
+
+2) Az edző (trainer) létezésének ellenőrzése: programSave.trainerId alapján.
+
+3) A program entitás frissítése a kapott adatokkal (ProgramSave objektum alapján).
+
+4) A program mentése az adatbázisba.
+
+5) A válasz DTO (ProgramRead) összeállítása és visszaküldése a kliens felé.
+
+[cols="3,4"]
+|===
+
+| Request paraméter | Entitás mező
+
+| trainerId
+| program.trainer
+
+| startTime
+| program.startTime
+
+| endTime
+| program.endTime
+
+| price
+| program.price
+
+| capacity
+| program.capacity
+
+| programType
+| program.programType
+
+|===
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| program.id
+
+| trainer
+| program.trainer (id, name)
+
+| startTime
+| program.startTime
+
+| endTime
+| program.endTime
+
+| price
+| program.price
+
+| capacity
+| program.capacity
+
+| programType
+| program.programType
+
+| status
+| program.status
+
+|===
+
+link:interfaces-program.adoc[Vissza]

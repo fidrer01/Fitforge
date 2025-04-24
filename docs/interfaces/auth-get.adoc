@@ -1,0 +1,73 @@
+= Autentikált felhasználó adatainak lekérdezése interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Az autentikált felhasználó adatait kérdezi le a rendszer.
+
+| Request method
+| GET
+
+| PathURL
+| /auth/me
+
+| Params
+| -
+
+| response
+|
+{
+
+id,
+
+email,
+
+role
+
+}
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi, hogy a bejelentkezett felhasználó lekérje saját adatait. A kéréshez a válaszban visszaküldjük a felhasználó azonosítóját (id), e-mail címét és szerepét (role).
+
+== Műveletek
+
+1) A kérésben a felhasználónak rendelkeznie kell egy érvényes JWT tokennel a Authorization fejlécben.
+
+2) A token dekódolásra kerül, hogy kinyerjük a felhasználó e-mail címét.
+
+3) A rendszer az e-mail cím alapján visszaadja a felhasználó részletes adatait, ha az adott felhasználó létezik az adatbázisban.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| A felhasználó azonosítója.
+
+| email
+| A felhasználó e-mail címe.
+
+| role
+| A felhasználó szerepe (pl. "CLIENT", "TRAINER").
+
+|===
+
+== Hibák
+
+A 401 UNAUTHORIZED hiba akkor fordul elő, ha a kérés nem tartalmaz érvényes JWT tokent a fejlécben.
+
+[cols="3,2"]
+|===
+
+| Hiba oka | Üzenet
+
+| JWT token nem található vagy hibás
+| UNAUTHORIZED
+
+|===
+
+link:interfaces-auth.adoc[Vissza]

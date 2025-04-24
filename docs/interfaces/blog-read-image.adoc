@@ -1,0 +1,70 @@
+= Blog képének lekérdezése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| A bloghoz tartozó kép lekérése az adott blog ID alapján.
+
+| Request method
+| GET
+
+| PathURL
+| /blog/image/{id}
+
+| Params
+|
+  id: A lekérni kívánt blog azonosítója.
+
+| response
+|
+  A válasz egy kép fájl adatát tartalmazza bináris formában.
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi a bloghoz tartozó kép lekérdezését az adatbázisban tárolt fájl alapján.
+
+== Műveletek
+
+=== Validáció
+
+- Az id path parameter alapján léteznie kell blog entitásnak az adatbázisban.
+- Ha a bloghoz nincs hozzárendelve fájl (kép), akkor PictureNotFoundException hiba keletkezik.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott bloghoz nem tartozik kép.
+| PICTURE_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) Az id alapján lekérjük a blogot az adatbázisból.
+2) Ellenőrizzük, hogy a bloghoz van-e tartozó kép (fájl).
+3) Ha van, a fájl adatát visszaküldjük válaszként.
+
+[cols="3,4"]
+|===
+
+| Request paraméter | Entitás mező
+
+| id | blog.id
+
+|===
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| body | A blog képének bináris adatai
+
+|===
+
+link:interfaces-blog.adoc[Vissza]

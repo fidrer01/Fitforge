@@ -1,0 +1,54 @@
+= Követelmény specifikáció
+
+[cols="5,3,2"]
+
+|===
+|Követelmény|Használati esetek|Állapot
+
+|*Edzők kezelése*
+
+* A rendszerben lévő edzők listázása
+
+* Új edző rögzítése a rendszerben
+
+* Id alapján kiválasztott edző metaadatainak megtekintése, módosítása
+
+* Id alapján kiválasztott edző törlése
+
+* Értékelés hozzáadása egy id alapján kiválasztott edzőhőz
+
+* Egy id alapján kiválasztott edző értékeléseinek átlagának lekérdezése
+
+
+|Trainer CRUD + listázás + értékelés
+|Backend elkészítve
+
+|*Kliensek kezelése*
+
+* A rendszerben lévő kliensek listázása
+
+* Új kliens rögzítése a rendszerben
+
+* Id alapján kiválasztott kliens metaadatainak megtekintése, módosítása
+
+* Id alapján kiválasztott kliens törlése
+
+|Client CRUD + listázás
+|Backend elkészítve
+
+|*Értékelések kezelése*
+
+* Kerüljenek rögzítésre az edzők értékelései.
+
+* Egy kiválasztott edző számára adott értékelések átlagának megtekintése.
+
+|Egy kiválasztott edző számára adott értékelések átlagának megtekintése
+|Backend elkészítve
+
+
+|A rendszerbe bejelentkezéssel lehet belépni. Szerepkörök: Kliens és Edző. A kliensek programokra jelentkezhetnek. Az adott programon módosításokat, törléseket csak a hozzátartozó edző végezhet.
+|Bejelentkezés, Kijelentkezés
+|Backend elkészítve
+|===
+
+link:application-documentation.adoc[Vissza]

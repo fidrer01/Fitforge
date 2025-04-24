@@ -1,0 +1,35 @@
+= Login
+
+A bejelentkezéshez szükséges adatokat eltároló entitás
+
+Az adatbázisban hozzátartozó tábla neve: login
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Integer (int)
+| I
+| elsődleges kulcs, auto-increment
+
+| email
+| String (varchar(100))
+| I
+| egyedi (unique)
+
+| password
+| String (varchar(255))
+| I
+| -
+
+| role
+| String (varchar(30))
+| I
+| -
+
+|===
+
+link:../entities.adoc[Vissza]

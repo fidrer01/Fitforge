@@ -1,0 +1,66 @@
+= Autentikált felhasználó törlése interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Az autentikált felhasználó törlését végzi el a rendszer.
+
+| Request method
+| DELETE
+
+| PathURL
+| /auth/delete
+
+| Params
+| -
+
+| response
+|
+{}
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi az autentikált felhasználó számára a saját fiókjának törlését. A törléshez érvényes JWT token szükséges a kérésben.
+
+== Műveletek
+
+1) A kérésben a felhasználónak rendelkeznie kell egy érvényes JWT tokennel a Authorization fejlécben.
+
+2) A token dekódolásra kerül, hogy kinyerjük a felhasználó e-mail címét.
+
+3) A rendszer az e-mail cím alapján törli a felhasználót az adatbázisból.
+
+4) Ha a felhasználó szerepe "CLIENT" vagy "TRAINER", a felhasználó törlésre kerül.
+
+5) Ha a felhasználó szerepe "ADMIN", a rendszer visszautasítja a törlést hozzáférési jogok miatt.
+
+[cols="3,2"]
+|===
+
+| Response paraméter | Érték
+
+| A válasz üzenete | A felhasználó sikeres törlését visszaigazoló üzenet: "User deleted successfully"
+
+|===
+
+== Hibák
+
+A 401 UNAUTHORIZED hiba akkor fordul elő, ha a kérés nem tartalmaz érvényes JWT tokent a fejlécben.
+
+A 403 ACCESS_DENIED hiba akkor fordul elő, ha a felhasználó "ADMIN" szereppel próbálja törölni saját fiókját.
+
+[cols="3,2"]
+|===
+
+| Hiba oka | Üzenet
+
+| JWT token nem található vagy hibás
+| UNAUTHORIZED
+
+| Felhasználó adminisztrátor szerepkörben próbál törölni
+| ACCESS_DENIED
+
+|===
+
+link:interfaces-auth.adoc[Vissza]

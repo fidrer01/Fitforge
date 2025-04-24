@@ -1,0 +1,110 @@
+= Program törlése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Egy program törlése az adatbázisból a megadott azonosító alapján.
+
+| Request method
+| DELETE
+
+| PathURL
+| /program/{id}
+
+| Params
+| id: A törölni kívánt program azonosítója.
+
+| request body
+| -
+
+| response
+|
+  {
+
+    id,
+
+    trainer {
+      id,
+      name
+    },
+
+    startTime,
+
+    endTime,
+
+    price,
+
+    capacity,
+
+    programType,
+
+    status
+
+  }
+
+|===
+
+== Leírás
+A végpont lehetőséget biztosít egy adott program törlésére az adatbázisból. A válaszban visszaküldi a törölt program adatait.
+
+== Műveletek
+
+=== Validáció
+
+- Az id paraméterrel megadott programnak léteznie kell az adatbázisban.
+- Ha nem létezik ilyen program, akkor a rendszer hibaüzenetet küld vissza.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott azonosítóhoz nem tartozik program az adatbázisban
+| PROGRAM_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) A program létezésének ellenőrzése az adatbázisban: program.id == pathVariable: id.
+
+2) A program entitás lekérdezése és konvertálása válasz DTO-vá (ProgramRead).
+
+3) A program törlése az adatbázisból.
+
+4) A törölt program adataival a response visszaküldése.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| program.id
+
+| trainer
+| program.trainer (id, name)
+
+| startTime
+| program.startTime
+
+| endTime
+| program.endTime
+
+| price
+| program.price
+
+| capacity
+| program.capacity
+
+| programType
+| program.programType
+
+| status
+| program.status
+
+|===
+
+link:interfaces-program.adoc[Vissza]

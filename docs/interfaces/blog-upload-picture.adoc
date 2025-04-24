@@ -1,0 +1,71 @@
+= Blog képének frissítése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Kép feltöltése egy meglévő bloghoz az azonosító alapján.
+
+| Request method
+| POST
+
+| PathURL
+| /blog/upload-image/{id}
+
+| Params
+| id: A blog azonosítója, amelyhez a képet feltöltjük.
+
+| request body
+|
+  file (A feltöltendő kép fájlja (bináris adat))
+
+| response
+|
+  string: "Image uploaded successfully"
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi egy kép feltöltését egy meglévő bloghoz az adatbázisban, amely a blog azonosítóját használja a megfelelő blog megtalálásához.
+
+== Műveletek
+
+=== Validáció
+
+- A megadott id alapján léteznie kell blognak az adatbázisban.
+- Ha a blog nem található, a rendszer hibaüzenetet küld vissza.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott azonosítóhoz nem tartozik blog
+| BLOG_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) A blog entitás lekérdezése az adatbázisból a id alapján.
+
+2) A fájl mentése az adatbázisba, létrehozva egy új FileEntity példányt.
+
+3) A fájladatok társítása a bloghoz.
+
+4) A frissített blog mentése az adatbázisba.
+
+5) Válasz visszaküldése a sikeres fájlfeltöltésről.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| string
+| "Image uploaded successfully"
+
+|===
+
+link:interfaces-blog.adoc[Vissza]

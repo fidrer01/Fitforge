@@ -1,0 +1,35 @@
+= FileEntity
+
+A feltölteni kívánt képet eltároló entitás
+
+Az adatbázisban hozzátartozó tábla neve: file_entity
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Long (bigint)
+| I
+| elsődleges kulcs, auto-increment
+
+| fileName
+| String (varchar(255))
+| I
+| -
+
+| fileType
+| String (varchar(255))
+| N
+| -
+
+| data
+| byte[] (longblob)
+| N
+| -
+
+|===
+
+link:../entities.adoc[Vissza]

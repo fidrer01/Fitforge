@@ -1,0 +1,150 @@
+.adminPage {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Arial, sans-serif';
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(20px, 5vw, 50px);
+    padding-top: clamp(70px, 10vh, 80px);
+}
+
+.section {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sectionHeader {
+    background-color: #f5f5f5;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    color: #333;
+    border-radius: 8px 8px 0 0;
+}
+
+.toggleIcon {
+    font-size: 1rem;
+}
+
+.sectionContent {
+    padding: 15px 20px;
+}
+
+.endpoint {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.endpoint:last-child {
+    border-bottom: none;
+}
+
+.deleteBtn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: clamp(6px, 2vw, 8px) clamp(12px, 3vw, 16px); /* Fluid padding */
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.deleteBtn:hover:not(:disabled) {
+    background-color: #e63939;
+}
+
+.deleteBtn:disabled {
+    background-color: #ff9999;
+    cursor: not-allowed;
+}
+
+.endpointInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.endpointPath {
+    color: #333;
+    font-family: monospace;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.endpointDescription {
+    color: #666;
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+.status {
+    color: red;
+    font-style: italic;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+
+@media (max-width: 720px) {
+    .contentWrapper {
+        padding: 15px;
+        padding-top: 60px;
+    }
+
+    .sectionHeader {
+        padding: 12px 15px;
+    }
+
+    .sectionContent {
+        padding: 10px 15px;
+    }
+
+    .endpoint {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 0;
+        gap: 8px;
+    }
+
+    .deleteBtn {
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 10px;
+    }
+
+    .endpointInfo {
+        width: 100%;
+    }
+
+    .endpointPath,
+    .endpointDescription,
+    .status {
+        width: 100%;
+        word-wrap: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .sectionHeader {
+        font-size: clamp(1rem, 3vw, 1.25rem);
+    }
+
+    .deleteBtn {
+        font-size: 0.875rem;
+    }
+}

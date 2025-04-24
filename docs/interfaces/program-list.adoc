@@ -1,0 +1,99 @@
+= Programok listázása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Az összes program lekérdezése az adatbázisból.
+
+| Request method
+| GET
+
+| PathURL
+| /program/
+
+| Params
+| -
+
+| request body
+| -
+
+| response
+|
+  [
+    {
+
+      id,
+
+      trainer {
+        id,
+        name
+      },
+
+      startTime,
+
+      endTime,
+
+      price,
+
+      capacity,
+
+      programType,
+
+      status
+
+    }
+  ]
+
+|===
+
+== Leírás
+A végpont visszaadja az összes adatbázisban szereplő programot. A válasz egy listát tartalmaz, ahol minden elem egy ProgramRead típusú DTO.
+
+== Műveletek
+
+=== Validáció
+
+- A végpont nem vár bemeneti paramétert vagy request body-t.
+- Az adatbázisból minden Program entitást lekér.
+
+=== A folyamat lépései
+
+1) Az összes program entitás lekérdezése az adatbázisból.
+
+2) Az entitások konvertálása válasz DTO listává (List<ProgramRead>).
+
+3) A response visszaküldése a kliensnek.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| program.id
+
+| trainer
+| program.trainer (id, name)
+
+| startTime
+| program.startTime
+
+| endTime
+| program.endTime
+
+| price
+| program.price
+
+| capacity
+| program.capacity
+
+| programType
+| program.programType
+
+| status
+| program.status
+
+|===
+
+link:interfaces-program.adoc[Vissza]

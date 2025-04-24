@@ -1,0 +1,141 @@
+= Kliensek kezelése - Technikai modell
+
+== Használati eset realizációk
+
+=== Kliensek listázása
+Használati eset azonosító: UC_C_List
+
+A felhasználó a
+
+- fő menüsorban
+
+- a "Kliensek" gombra kattintva
+
+Az oldal betöltődés részeként meghívja a
+
+- GET /client azonosítójú Kliensek listázása elnevezésű interfészt az alábbi mapping megvalósításával:
+
+[cols="1,1"]
+|===
+
+| Interfész input paraméter |érték
+
+|-
+|-
+
+|===
+A response visszatér a kliensek listájával. Mapping:
+
+[cols="1,1"]
+|===
+
+|Interfész output paraméter| felhasználás
+
+|ClientListItem[].id |Nem jelenik meg. A frontend a megtekintéshez használja.
+
+|ClientListItem[].name |Kliens neve oszlop
+
+|ClientListItem[].birthDate |Kliens születési dátuma oszlop
+
+|ClientListItem[].gender |Kliens neme oszlop
+Felhasználás:
+MALE -> Male
+FEMALE -> Female
+OTHER -> Other
+
+|ClientListItem[].phoneNumber |Kliens telefonszáma oszlop
+|===
+
+=== Kliens megtekintése
+Használati eset azonosító: UC_C_Read
+
+A felhasználó a
+
+- Kliensek listájában
+
+- a „Profil” gombra kattintva
+
+A kliens profil oldalra jut, ahol az oldal betöltődésekor meghívja a
+
+- GET /client/{id} azonosítójú Kliens megtekintése interfészt.
+
+[cols="1,1"]
+|===
+
+|Interfész input paraméter| érték
+
+|id |A frontend által ismert kliens azonosító
+
+|===
+
+A response visszatér a kliens metaadataival. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|id |Nem jelenik meg
+
+|name |Kliens neve címke
+
+|birthDate |Kliens születési dátuma címke
+
+|gender |Kliens neme címke
+MALE -> Male
+FEMALE -> Female
+OTHER -> Other
+
+|phoneNumber |Kliens telefonszáma címke
+
+|===
+
+=== Kliens módosítása
+Használati eset azonosító: UC_C_Patch
+
+A felhasználó a
+
+- Kliens szerkesztése felületen
+
+- a „Mentés” gombra kattintva
+
+A rendszer meghívja a
+
+- PATCH /client/{id} azonosítójú Kliens módosítása interfészt az alábbi mapping megvalósításával:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A frontend által ismert kliens azonosító
+
+|selected |A módosítani kívánt mező neve (pl. "name", "birthDate", "phoneNumber")
+
+|value |Az új érték
+|===
+
+A response visszatér a kliens frissített metaadataival. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|id |Nem jelenik meg
+
+|name |Kliens neve címke
+
+|birthDate |Kliens születési dátuma címke
+
+|gender |Kliens neme címke
+MALE -> Male
+FEMALE -> Female
+OTHER -> Other
+
+|phoneNumber |Kliens telefonszáma címke
+|===
+
+== Érintett komponensek
+
+Frontend: vizsgaremekFront ← → Backend: fitness
+
+link:../technical-models.adoc[Vissza]
+

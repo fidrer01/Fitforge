@@ -1,0 +1,111 @@
+= Blog módosítása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Egy meglévő blog adatainak módosítása az azonosító alapján.
+
+| Request method
+| PUT
+
+| PathURL
+| /blog/{id}
+
+| Params
+| id: A módosítani kívánt blog azonosítója.
+
+| request body
+|
+  {
+
+    blogType,
+
+    title,
+
+    headerText,
+
+    mainText
+
+  }
+
+| response
+|
+  {
+
+    id,
+
+    blogType,
+
+    title,
+
+    headerText,
+
+    mainText,
+
+    trainer {
+      id,
+      name
+    }
+
+  }
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi egy meglévő blog adatainak módosítását az adatbázisban a megadott azonosító alapján.
+
+== Műveletek
+
+=== Validáció
+
+- A megadott id alapján léteznie kell blognak az adatbázisban.
+- Ha a blog nem található, a rendszer hibaüzenetet küld vissza.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott azonosítóhoz nem tartozik blog
+| BLOG_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) A blog entitás lekérdezése az adatbázisból az id alapján.
+
+2) A blog mezőinek frissítése a bemeneti BlogUpdate DTO adataival.
+
+3) Az entitás mentése az adatbázisba.
+
+4) A frissített blog visszaadása válasz DTO-ként (BlogRead).
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| blog.id
+
+| blogType
+| blog.blogType
+
+| title
+| blog.title
+
+| headerText
+| blog.headerText
+
+| mainText
+| blog.mainText
+
+| trainer
+| blog.trainer (id, name)
+
+|===
+
+link:interfaces-blog.adoc[Vissza]

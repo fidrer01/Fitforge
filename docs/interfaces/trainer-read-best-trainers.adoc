@@ -1,0 +1,98 @@
+= Legjobban értékelt edzők lekérdezése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| A legjobb edzők lekérdezése
+
+| Request method
+| GET
+
+| PathURL
+| /trainer/bestRatedTrainers
+
+| Params
+| -
+
+| request body
+| -
+
+| response
+|
+  [
+    {
+
+      id,
+
+      name,
+
+      birthDate,
+
+      gender,
+
+      qualification,
+
+      phoneNumber,
+
+      rating,
+
+      login {
+        loginId,
+        email,
+        role
+      }
+
+    }
+  ]
+
+|===
+
+== Leírás
+A legjobban értékelt edzők lekérdezése. Az edzők listáját a legmagasabb értékelés alapján rendezi.
+
+== Műveletek
+
+=== Validáció
+-
+
+=== A folyamat lépései
+
+1) Az edzők lekérdezése az adatbázisból.
+
+2) Az edzők listájának rendezése a legmagasabb értékelés alapján.
+
+3) A legjobban értékelt edzők válaszban történő visszaküldése.
+
+[cols="3,4"]
+|===
+
+|Response paraméter |Érték
+
+|id
+|trainer.id
+
+|name
+|trainer.name
+
+|birthDate
+|trainer.birthDate
+
+|gender
+|trainer.gender
+
+|qualification
+|trainer.qualification
+
+|phoneNumber
+|trainer.phoneNumber
+
+|rating
+|trainer.rating
+
+|login
+|trainer.login (loginId, email, role)
+
+|===
+
+link:interfaces-trainer.adoc[Vissza]

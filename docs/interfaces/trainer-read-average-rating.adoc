@@ -1,0 +1,65 @@
+= Edző átlag értékelésének lekérdezése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Az adott edző átlagos értékelésének lekérdezése
+
+| Request method
+| GET
+
+| PathURL
+| /trainer/{id}/rating
+
+| Params
+| id: Az edző egyedi azonosítója
+
+| request body
+| -
+
+| response
+| {
+
+    averageRating
+
+  }
+
+|===
+
+== Leírás
+Az edző átlagos értékelésének lekérdezése egyedi azonosító alapján.
+
+== Műveletek
+
+=== Validáció
+- Az id pathVariable alapján léteznie kell trainer entitásnak az adatbázisban.
+
+Validációs hiba esetén a folyamat leáll, a response hibaüzenetet küld.
+
+[cols="4,2,1"]
+|===
+
+|Hiba oka |Üzenet |Status code
+
+|Az azonosítóhoz nem tartozik edző az adatbázisban
+|TRAINER_NOT_FOUND
+|404
+
+|===
+
+=== A folyamat lépései
+
+1) Az edzőhöz tartozó értékelések átlagának lekérdezése.
+
+[cols="3,4"]
+|===
+
+| response paraméter |érték
+
+|átlag értékelés
+|ratingRepository.getAverageRatingByTrainer(trainerId)
+
+|===
+
+link:interfaces-trainer.adoc[Vissza]

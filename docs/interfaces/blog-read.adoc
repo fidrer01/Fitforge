@@ -1,0 +1,98 @@
+= Blog lekérdezése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Egy blog lekérdezése az adatbázisból a megadott azonosító alapján.
+
+| Request method
+| GET
+
+| PathURL
+| /blog/{id}
+
+| Params
+| id: A lekérdezni kívánt blog azonosítója.
+
+| request body
+| -
+
+| response
+|
+  {
+
+    id,
+
+    blogType,
+
+    title,
+
+    headerText,
+
+    mainText,
+
+    trainer {
+      id,
+      name
+    }
+
+  }
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi egy adott blog adatainak lekérdezését az adatbázisból. Az id paraméter alapján a megfelelő blog kerül visszaadásra.
+
+== Műveletek
+
+=== Validáció
+
+- Az id paraméterrel megadott blognak léteznie kell az adatbázisban.
+- Ha a blog nem található, a rendszer hibaüzenetet küld vissza.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott azonosítóhoz nem tartozik blog az adatbázisban
+| BLOG_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) A blog entitás lekérdezése az adatbázisból: blog.id == pathVariable: id.
+
+2) Az entitás konvertálása válasz DTO-vá (BlogRead).
+
+3) A blog adatai visszaküldése a kliensnek.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| blog.id
+
+| blogType
+| blog.blogType
+
+| title
+| blog.title
+
+| headerText
+| blog.headerText
+
+| mainText
+| blog.mainText
+
+| trainer
+| blog.trainer (id, name)
+
+|===
+
+link:interfaces-blog.adoc[Vissza]

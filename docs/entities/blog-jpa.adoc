@@ -1,0 +1,50 @@
+= Blog
+
+A blog példányokat eltároló entitás
+
+Az adatbázisban hozzátartozó tábla neve: blog
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Integer (int)
+| I
+| elsődleges kulcs, auto-increment
+
+| blogType
+| String (varchar(400))
+| I
+| -
+
+| title
+| String (varchar(400))
+| I
+| -
+
+| headerText
+| String (text)
+| I
+| -
+
+| mainText
+| String (text)
+| I
+| -
+
+| fileId
+| Integer (bigint)
+| N
+| -
+
+| trainerId
+| Integer (int)
+| I
+| -
+
+|===
+
+link:../entities.adoc[Vissza]

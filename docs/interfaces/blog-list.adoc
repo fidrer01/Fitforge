@@ -1,0 +1,79 @@
+= Blogok listázása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Az összes blog lekérdezése.
+
+| Request method
+| GET
+
+| PathURL
+| /blog/
+
+| Params
+| Nincs paraméter.
+
+| request body
+| -
+
+| response
+|
+  [
+    {
+
+      "id": 0,
+
+      "title": "string",
+
+      "headerText": "string",
+
+      "mainText": "string",
+
+      "blogType": "TRAINING",
+
+      "trainer": {
+        "id": 0,
+        "name": "string"
+      }
+
+    }
+  ]
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi az összes blog lekérdezését az adatbázisból. A válasz tartalmazza a blogok alapvető adatait.
+
+== Műveletek
+
+=== Validáció
+-
+
+=== A folyamat lépései
+
+1) Az összes blog lekérdezése az adatbázisból.
+
+2) A blogok adatainak formázása és válasz visszaküldése.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id | blog.id
+
+| title | blog.title
+
+| headerText | blog.headerText
+
+| mainText | blog.mainText
+
+| blogType | blog.blogType
+
+| trainer | blog.trainer (id, name)
+
+|===
+
+link:interfaces-blog.adoc[Vissza]

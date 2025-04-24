@@ -1,0 +1,113 @@
+== Kliens frissítése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| A kliens adatainak frissítése az egyedi azonosító alapján.
+
+| Request method
+| PATCH
+
+| PathURL
+| /client/{id}
+
+| Params
+| id: A kliens egyedi azonosítója
+
+| request body
+|
+  {
+
+    "selected": "NAME",
+
+    "value": {}
+
+  }
+
+| response
+|
+  {
+
+    "id",
+
+    "name",
+
+    "birthDate",
+
+    "gender",
+
+    "phoneNumber",
+
+    "login": {
+      "loginId",
+      "email",
+      "role"
+    }
+
+  }
+
+|===
+
+== Leírás
+A kliens adatainak frissítése a megadott id alapján. A kérésben a selected mező határozza meg, hogy melyik adatot kell frissíteni (például NAME, BIRTH_DATE, vagy PHONE_NUMBER), a value mező tartalmazza az új adatot.
+
+== Műveletek
+
+=== Validáció
+- Az id pathVariable alapján léteznie kell client entitásnak az adatbázisban.
+- A selected mező értéke csak a következő lehet: NAME, BIRTH_DATE, PHONE_NUMBER.
+
+Validációs hiba esetén a folyamat leáll, a response hibaüzenetet küld.
+
+[cols="4,2,1"]
+|===
+
+|Hiba oka |Üzenet |Status code
+
+|Az azonosítóhoz nem tartozik kliens az adatbázisban
+|CLIENT_NOT_FOUND
+|404
+
+|Érvénytelen bemeneti adat
+|INVALID_INPUT
+|400
+
+|===
+
+=== A folyamat lépései
+
+1) A kliens lekérdezése az adatbázisból.
+
+2) A kiválasztott adat frissítése a selected mező alapján (pl. név, születési dátum, telefonszám).
+
+3) Az új kliens adatainak mentése az adatbázisba.
+
+4) A frissített kliens adatainak visszaküldése válaszként.
+
+[cols="3,4"]
+|===
+
+| response paraméter | érték
+
+|id
+|client.id
+
+|name
+|client.name
+
+|birthDate
+|client.birthDate
+
+|gender
+|client.gender
+
+|phoneNumber
+|client.phoneNumber
+
+|login
+|client.login (loginId, email, role)
+
+|===
+
+link:interfaces-client.adoc[Vissza]

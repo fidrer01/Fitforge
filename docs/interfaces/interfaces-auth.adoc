@@ -1,0 +1,16 @@
+= Autentikációs interfészek
+
+* link:auth-delete.adoc[Autentikált felhasználó törlése]
+
+* link:auth-deletebyid.adoc[Felhasználó törlése Login Id alapján]
+
+* link:auth-get.adoc[Autentikált felhasználó adatainak lekérdezése]
+
+* link:auth-login.adoc[Bejelentkezés]
+
+* link:auth-registerclient.adoc[Kliens regisztráció]
+
+* link:auth-registertrainer.adoc[Edző regisztráció]
+
+
+link:../interfaces.adoc[Vissza]

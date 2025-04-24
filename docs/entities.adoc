@@ -1,0 +1,19 @@
+= Entitások
+
+- link:entities/trainer-jpa.adoc[Trainer]
+
+- link:entities/client-jpa.adoc[Client]
+
+- link:entities/blog-jpa.adoc[Blog]
+
+- link:entities/program-jpa.adoc[Program]
+
+- link:entities/login-jpa.adoc[Login]
+
+- link:entities/rating-jpa.adoc[Rating]
+
+- link:entities/fileEntity-jpa.adoc[FileEntity]
+
+- link:entities/allocate-jpa.adoc[Allocate]
+
+link:system-plan.adoc[Vissza]

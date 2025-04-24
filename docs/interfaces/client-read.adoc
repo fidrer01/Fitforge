@@ -1,0 +1,97 @@
+== Kliens lekérdezése interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Az adott kliens adatainak lekérdezése
+
+| Request method
+| GET
+
+| PathURL
+| /client/{id}
+
+| Params
+| id: A kliens egyedi azonosítója
+
+| request body
+| -
+
+| response
+|
+  {
+
+    "id",
+
+    "name",
+
+    "birthDate",
+
+    "gender",
+
+    "phoneNumber",
+
+    "login": {
+      "loginId",
+      "email",
+      "role"
+    }
+
+  }
+
+|===
+
+== Leírás
+A kliens metaadatainak lekérdezése egyedi azonosító alapján.
+
+== Műveletek
+
+=== Validáció
+- Az id pathVariable alapján léteznie kell client entitásnak az adatbázisban.
+
+Validációs hiba esetén a folyamat leáll, a response hibaüzenetet küld.
+
+[cols="4,2,1"]
+|===
+
+|Hiba oka |Üzenet |Status code
+
+|Az azonosítóhoz nem tartozik kliens az adatbázisban
+|CLIENT_NOT_FOUND
+|404
+
+|===
+
+=== A folyamat lépései
+
+1) A kliens lekérdezése az adatbázisból.
+
+2) A response összeállítása és küldése.
+
+[cols="3,4"]
+|===
+
+| response paraméter | érték
+
+|id
+|client.id
+
+|name
+|client.name
+
+|birthDate
+|client.birthDate
+
+|gender
+|client.gender
+
+|phoneNumber
+|client.phoneNumber
+
+|login
+|client.login (loginId, email, role)
+
+|===
+
+link:interfaces-client.adoc[Vissza]

@@ -1,0 +1,30 @@
+= Allocate
+
+A felhasználókat és jogosultságokat összekapcsoló entitás
+
+Az adatbázisban hozzátartozó tábla neve: allocate
+
+
+[cols="1,1,1,1"]
+|===
+
+| mező neve | típusa | kötelező | megkötések
+
+| id
+| Integer (int)
+| I
+| elsődleges kulcs, auto-increment
+
+| loginId
+| Integer (int)
+| I
+| -
+
+| permissionId
+| String (varchar(30))
+| I
+| Permission enum értékeit veheti fel
+
+|===
+
+link:../entities.adoc[Vissza]

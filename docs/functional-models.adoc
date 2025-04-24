@@ -1,0 +1,15 @@
+= Funkcionális modellek
+
+link:functional-models/manage-trainers-functional-model.adoc[Edzők kezelése]
+
+link:functional-models/manage-clients-functional-model.adoc[Kliensek kezelése]
+
+link:functional-models/manage-programs-functional-model.adoc[Programok kezelése]
+
+link:functional-models/manage-blogs-functional-model.adoc[Blogok kezelése]
+
+link:functional-models/manage-program-client-functional-model.adoc[Programok és kliensek kezelése]
+
+link:functional-models/manage-users-functional-models.adoc[Felhasználók kezelése]
+
+link:system-plan.adoc[Vissza]

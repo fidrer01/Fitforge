@@ -1,0 +1,125 @@
+= Fitness Weboldal README
+:toc: left
+:sectnums:
+:icons: font
+
+ifdef::env-github[]
+:tip-caption: 💡
+:note-caption: ℹ️
+:important-caption: ❗
+:caution-caption: 🔥
+:warning-caption: ⚠️
+endif::[]
+
+== Összegzés ℹ️
+
+A fitness weboldal egy olyan platform, amelyet mi, a csapat – Nagy Kristóf, Vass Dániel és Gadnai Geminián – fejlesztettünk, hogy támogassuk az egészséges életmódot és a közösségi edzéstervezést. Az alkalmazás lehetővé teszi kliensek számára, hogy edzésterveket böngésszenek és jelentkezzenek rájuk, edzők számára, hogy programokat hozzanak létre és kezeljenek, valamint adminisztrátorok számára, hogy felügyeljék az edzőket. A blogrendszer inspirációt nyújt, és a lapozható naptár segít az edzések időzítésében. A projektet GitHub segítségével fejlesztettük, biztosítva a stabil és összehangolt munkafolyamatot.
+
+=== Főbb funkciók
+
+-  *Kliensek:* Edzéstervek böngészése, jelentkezés, edzők értékelése.
+-  *Edzők:* Edzéstervek létrehozása, szerkesztése, törlése; blogok írása.
+-  *Adminisztrátorok:* Edzők kezelése, törlése (kirúgása) az admin panelen keresztül.
+-  *Blogrendszer:* Blogok olvasása, írása (edzők számára).
+-  *Reszponzív dizájn:* Az oldal mobil- és asztali nézetben is jól működik.
+
+== Használt Technológiák 🛠️
+
+A projekt fejlesztése során a következő technológiákat és eszközöket használtuk:
+
+=== Frontend 🖥️
+
+-  *React:* A felhasználói felület építéséhez (`react`).
+-  *React Testing Library:* Komponensek teszteléséhez.
+-  *Jest:* Egységtesztek futtatásához.
+-  *CSS Modules:* Stílusok kezelésére (pl. `AdminPage.module.css`).
+-  *Material-UI:* UI komponensekhez (pl. snackbarok, gombok).
+
+=== Backend 🖧
+
+-  *Spring Boot:* A backend API fejlesztéséhez.
+-  *Java:* A backend logika implementálásához.
+-  *Maven:* A backend függőségek kezelésére.
+-  *Liquibase:* Adatbázis sémák kezelésére és inicializálására.
+-  *MySQL:* Adatbázis a backend számára (kötelező).
+
+=== Backend Kommunikáció 🔄
+
+- ️ *Axios:* HTTP kérések kezelésére a frontend és backend között (pl. `axios.get`, `axios.delete`).
+
+=== Verziókezelés 🌿
+
+- *GitHub:* Kód tárolása, együttműködés és verziókezelés.
+
+=== Fejlesztőkörnyezet 🔧
+
+- *IntelliJ IDEA:* A Spring Boot backend futtatásához és fejlesztéséhez (kötelező).
+- *Node.js:* A frontend futtatásához.
+- *npm:* A frontend csomagkezeléshez.
+-  *MySQL:* Adatbázis szerver (kötelező a Liquibase miatt).
+
+== Telepítési Útmutató 📥
+
+Az alábbi lépések segítségével telepítheted és futtathatod a fitness weboldalt a saját gépeden. A weboldal működéséhez a Spring Boot alapú backend futtatása kötelező, amelyet IntelliJ IDEA segítségével kell elindítani. A backend Liquibase-t használ a MySQL adatbázis kezelésére, ezért a MySQL telepítése és konfigurálása is szükséges. A telepítés előtt győződj meg róla, hogy a szükséges eszközök telepítve vannak.
+
+=== Előfeltételek ✅
+
+-  *Node.js* (legalább 18.x verzió) és *npm* telepítve a frontendhez.
+-  *Java* (legalább 21.x verzió) telepítve a backendhez.
+-  *Maven* telepítve (általában az IntelliJ IDEA-val együtt érkezik).
+-  *IntelliJ IDEA* (Community vagy Ultimate verzió) telepítve a Spring Boot backend futtatásához.
+-  *MySQL* (legalább 8.x verzió) telepítve a gépeden, mivel a Liquibase MySQL adatbázist használ.
+-  *Git* telepítve a gépeden.
+
+Klónozd a repository-t
+
+Nyisd meg a terminált, és klónozd a projektet a GitHub-ról:
+
+[source,console]
+git clone https://github.com/fidrer01/Fitforge.git
+
+MySQL adatbázis beállítása
+A backend Liquibase-t használ a MySQL adatbázis inicializálására, ezért előbb be kell állítanod a MySQL szervert.
+Telepítsd a MySQL-t a gépedre, ha még nincs telepítve (pl. MySQL Community Server).
+
+Indítsd el a MySQL szervert.
+
+Backend beállítása és futtatása IntelliJ IDEA-val 🖧
+
+A backend futtatása kötelező, mivel a frontend API hívásokat küld a Spring Boot szervernek.
+Nyisd meg az IntelliJ IDEA-t, és importáld a backend mappát mint Maven projektet:
+
+Válaszd a File > Open menüpontot, majd navigálj a fitness-weboldal/backend mappához, és nyisd meg.
+
+Az IntelliJ automatikusan felismeri a pom.xml fájlt, és importálja a projektet.
+
+Ellenőrizd a függőségeket:
+Az IntelliJ letölti a Maven függőségeket (pl. Spring Boot Starter Web, Liquibase). Ha nem töltődnek be automatikusan, kattints a Maven fülre az IntelliJ jobb oldali paneljén, és nyomd meg a "Reload All Maven Projects" gombot (frissítés ikon).
+
+Futtasd a backend szervert:
+Nyisd meg a backend/src/main/java mappában található fő Spring Boot alkalmazás fájlt (pl. FitnessApplication.java).
+
+Kattints a jobb egérgombbal a fájlra, és válaszd a Run 'FitnessApplication' opciót, vagy nyomd meg a zöld "Run" gombot az IntelliJ tetején.
+
+A szerver elindul, és a konzolon láthatod, hogy a Spring Boot alkalmazás fut a http://localhost:8080 címen (vagy az application.properties-ben megadott porton).
+
+A Liquibase automatikusan inicializálja az adatbázist a db.changelog-master.yaml fájl alapján, létrehozva a szükséges táblákat (pl. trainer, training, blog).
+
+Frontend beállítása és futtatása
+A frontend a backend API-tól függ, ezért a backendnek futnia kell, mielőtt elindítod.
+Navigálj a frontend mappába:
+[source,console]
+cd frontend
+
+Telepítsd a függőségeket:
+[source,console]
+npm install
+
+Indítsd el a frontend fejlesztői szervert:
+[source,console]
+npm start
+Az alkalmazás automatikusan elindul, és a böngésződben megnyílik a http://localhost:3000 címen.
+
+== További Információk
+A projekt részletes dokumentációja a docs mappában található.
+

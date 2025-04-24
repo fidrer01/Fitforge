@@ -1,0 +1,184 @@
+= Blogok kezelése - Technikai modell
+
+== Használati eset realizációk
+
+=== Blogok listázása
+Használati eset azonosító: UC_Blog_List
+
+A felhasználó a
+
+- főmenüsorban
+
+- a „Blogok listázása” gombra kattintva
+
+Az oldal betöltődésének részeként meghívja a
+
+- GET /blog azonosítójú Blogok listázása nevű interfészt az alábbi mapping megvalósításával:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter	|érték
+
+|-
+|-
+|===
+A response visszatér a blogok listájával. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|BlogListItem[].id |Nem jelenik meg. A frontend a megtekintéshez használja.
+|BlogListItem[].title |Cím oszlop
+|BlogListItem[].trainerName |Edző oszlop
+|BlogListItem[].headerText |Fejléc szöveg oszlop
+|===
+
+=== Blog megtekintése
+Használati eset azonosító: UC_Blog_Read
+
+A felhasználó a
+
+- blogok listájából
+
+- egy adott blog címére kattintva
+
+Az oldal betöltődésével meghívja a
+
+- GET /blog/{id} azonosítójú Blog megtekintése interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+|id |A frontend által ismert blog azonosító
+|===
+
+A response visszatér a blog részletes adataival. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|id |Nem jelenik meg
+|title |Cím szöveg
+|trainerName |Edző szöveg
+|headerText |Fejléc szöveg
+|body |Fő szöveg
+|imageUrl |Kép megjelenítése (ha van)
+|===
+
+=== Blog létrehozása
+Használati eset azonosító: UC_Blog_Create
+
+A felhasználó a
+
+- blog létrehozás felületen
+
+- a „Létrehozás” gombra kattintva
+
+A rendszer meghívja a
+
+- POST /blog azonosítójú Blog létrehozása interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|title |A beírt cím szövege
+|trainerId |Kiválasztott edző azonosítója
+|headerText |A fejléc szöveg
+|body |A fő szöveg
+|image (opcionális) |Kép fájl (multipart/form-data)
+|===
+
+A response visszatér a létrehozott blog metaadataival:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|id |Nem jelenik meg
+|title |Megjelenhet a sikeres visszaigazolásban
+|===
+
+=== Blog módosítása
+Használati eset azonosító: UC_Blog_Update
+
+A felhasználó a
+
+- blog szerkesztő nézetben
+
+- a „Mentés” gombra kattintva
+
+A rendszer meghívja a
+
+- PATCH /blog/{id} azonosítójú Blog módosítása interfészt az alábbi mapping megvalósításával:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A szerkesztett blog azonosítója
+|selected |A módosítandó mező neve
+|value |A mező új értéke
+|===
+
+A response visszatér a módosított blog metaadataival.
+
+=== Blog törlése
+Használati eset azonosító: UC_Blog_Delete
+
+A felhasználó a
+
+- Blog felületén
+
+- a törlés gombra kattint
+
+a rendszer megerősítés után meghívja a
+
+- DELETE /blog/{id} azonosítójú Blog törlése interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A törölni kívánt blog azonosítója
+|===
+
+A rendszer visszatér a sikeres törlés visszajelzésével.
+
+=== Blog kép feltöltése
+Használati eset azonosító: UC_Blog_Image_Upload
+
+A felhasználó a
+
+- Blog felületén
+
+- a kép kiválasztása és mentés gombra kattintva
+
+A rendszer meghívja a
+
+- POST /blog/{id}/image azonosítójú Blog kép feltöltése interfészt:
+
+[cols="1,1"]
+|===
+|Interfész input paraméter| érték
+
+|id |A blog azonosítója
+|image |A feltöltendő kép fájlja
+|===
+
+A response visszatér a feltöltött kép URL-jével. Mapping:
+
+[cols="1,1"]
+|===
+|Interfész output paraméter| felhasználás
+
+|imageUrl |A bloghoz tartozó frissített kép URL-je
+|===
+
+== Érintett komponensek
+
+Frontend: vizsgaremekFront ← → Backend: fitness
+
+link:../technical-models.adoc[Vissza]

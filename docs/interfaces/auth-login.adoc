@@ -1,0 +1,91 @@
+= Bejelentkezés interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Bejelentkezés e-mail és jelszó alapján.
+
+| Request method
+| POST
+
+| PathURL
+| /auth/login
+
+| Params
+| -
+
+| request body
+|
+{
+
+email,
+
+password
+
+}
+
+| response
+|
+{
+
+loginId,
+
+email,
+
+role
+
+}
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi a felhasználók számára, hogy e-mail cím és jelszó segítségével bejelentkezzenek az alkalmazásba. A sikeres bejelentkezés után egy JWT tokent ad vissza a válaszban.
+
+== Műveletek
+
+=== Validáció
+
+- Az e-mail címnek regisztráltnak kell lennie az adatbázisban.
+- A jelszónak helyesnek kell lennie a rendszerben tárolt titkosított jelszóval.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| Érvénytelen e-mail cím vagy jelszó
+| INVALID_CREDENTIALS
+| 401
+
+|===
+
+=== A folyamat lépései
+
+1) A felhasználó e-mail és jelszó alapján autentikálása történik.
+
+2) A bejelentkezési adatok ellenőrzése a rendszerben.
+
+3) A felhasználó jogosultságainak összegyűjtése.
+
+4) JWT token generálása, amely a válaszban szerepelni fog.
+
+5) A sikeres bejelentkezést követően visszaadjuk a felhasználó adatait és a JWT-t a válaszban.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| loginId
+| A felhasználó azonosítója.
+
+| email
+| A felhasználó e-mail címe.
+
+| role
+| A felhasználó szerepe (pl. "CLIENT", "TRAINER").
+
+|===
+
+link:interfaces-auth.adoc[Vissza]

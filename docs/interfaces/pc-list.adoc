@@ -1,0 +1,83 @@
+= Programhoz csatlakozott kliensek listázása interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Egy adott programhoz csatlakozott kliensek listázása azonosító alapján.
+
+| Request method
+| GET
+
+| PathURL
+| /program/{id}/client-list
+
+| Params
+|
+  `id`: A program azonosítója, amelyhez tartozó klienseket le szeretnénk kérdezni.
+
+| Request body
+| -
+
+| Response
+| Az adott programhoz csatlakozott kliensek listája ClientRead DTO formátumban.
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi az adott programhoz tartozó kliensek lekérdezését az adatbázisból a program azonosítója alapján. A válaszban a ClientRead típusú DTO-k listája található.
+
+== Műveletek
+
+=== Validáció
+
+- A megadott id alapján léteznie kell programnak az adatbázisban.
+- Ha a program nem található, a rendszer hibaüzenetet küld vissza.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott program nem található
+| PROGRAM_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) A program létezésének ellenőrzése az id alapján.
+
+2) Az adott programhoz tartozó ügyfelek lekérdezése.
+
+3) A kliensek konvertálása ClientRead DTO listára.
+
+4) A lista visszaküldése válaszként.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Jelentés
+
+| id
+| Az ügyfél azonosítója
+
+| name
+| Az ügyfél neve
+
+| birthDate
+| Az ügyfél születési dátuma
+
+| gender
+| Az ügyfél neme (MALE, FEMALE, stb.)
+
+| phoneNumber
+| Telefonszám
+
+| login
+| Bejelentkezési adatok (email, szerepkör, azonosító)
+
+|===
+
+link:interfaces-pc.adoc[Vissza]

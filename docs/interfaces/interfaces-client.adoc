@@ -1,0 +1,10 @@
+= Kliens interfészek
+
+* link:client-list.adoc[Kliensek listázása]
+
+* link:client-read.adoc[Kliens lekérdezése]
+
+* link:client-update.adoc[Kliens frissítése]
+
+
+link:../interfaces.adoc[Vissza]

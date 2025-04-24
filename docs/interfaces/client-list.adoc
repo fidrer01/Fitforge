@@ -1,0 +1,85 @@
+== Kliensek listázása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Az összes kliens adatainak lekérdezése.
+
+| Request method
+| GET
+
+| PathURL
+| /client/
+
+| Params
+| Nincsenek paraméterek.
+
+| request body
+| -
+
+| response
+| [
+  {
+
+    "id",
+
+    "name",
+
+    "birthDate",
+
+    "gender",
+
+    "phoneNumber",
+
+    "login": {
+      "loginId",
+      "email",
+      "role"
+    }
+
+  }
+]
+
+|===
+
+== Leírás
+Az összes kliens adatainak lekérdezése az adatbázisból.
+
+== Műveletek
+
+=== Validáció
+-
+
+=== A folyamat lépései
+
+1) Az összes kliens lekérdezése az adatbázisból.
+
+2) A kliensek adatainak visszaküldése válaszként.
+
+[cols="3,4"]
+|===
+
+| response paraméter | érték
+
+|id
+|client.id
+
+|name
+|client.name
+
+|birthDate
+|client.birthDate
+
+|gender
+|client.gender
+
+|phoneNumber
+|client.phoneNumber
+
+|login
+|client.login (loginId, email, role)
+
+|===
+
+link:interfaces-client.adoc[Vissza]

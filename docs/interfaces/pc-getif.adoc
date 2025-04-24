@@ -1,0 +1,77 @@
+= Kliens programon való részvételének lekérdezése interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Annak ellenőrzése, hogy egy adott kliens részt vett-e egy megadott programon.
+
+| Request method
+| GET
+
+| PathURL
+| /program/{programId}/clients/{clientId}
+
+| Params
+|
+  programId: A program azonosítója, amelyen való részvételt ellenőrizni szeretnénk. +
+  clientId: A kliens azonosítója, akinek a részvételét ellenőrizzük.
+
+| Request body
+| -
+
+| Response
+| true ha a kliens részt vett a programon, különben false.
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi annak ellenőrzését, hogy egy adott kliens részt vett-e egy megadott programon.
+
+== Műveletek
+
+=== Validáció
+
+- A clientId alapján léteznie kell kliensnek az adatbázisban.
+- A programId alapján léteznie kell programnak az adatbázisban.
+- Ha az ügyfél vagy program nem található, a rendszer hibaüzenetet küld vissza.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott kliens nem található
+| CLIENT_NOT_FOUND
+| 404
+
+| A megadott program nem található
+| PROGRAM_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) Az ügyfél entitás lekérdezése az adatbázisból a clientId alapján.
+
+2) A program entitás létezésének ellenőrzése a programId alapján.
+
+3) Az ügyfél programjai közül ellenőrizzük, szerepel-e a megadott program.
+
+4) A válasz true, ha részt vett a programon, különben false.
+
+[cols="3,4"]
+|===
+
+| Response érték | Jelentés
+
+| true
+| Az ügyfél részt vett a programon.
+
+| false
+| Az ügyfél nem vett részt a programon.
+
+|===
+
+link:interfaces-pc.adoc[Vissza]

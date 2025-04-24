@@ -1,0 +1,130 @@
+= Program létrehozása interfész
+
+[col="1h,3"]
+|===
+
+| Összegzés
+| Új program létrehozása az adatbázisban.
+
+| Request method
+| POST
+
+| PathURL
+| /program/
+
+| Params
+| -
+
+| request body
+|
+  {
+
+    trainerId,
+
+    startTime,
+
+    endTime,
+
+    price,
+
+    capacity,
+
+    programType
+
+  }
+
+| response
+|
+  {
+
+    id,
+
+    trainer {
+      id,
+      name
+    },
+
+    startTime,
+
+    endTime,
+
+    price,
+
+    capacity,
+
+    programType,
+
+    status
+
+  }
+
+|===
+
+== Leírás
+Ez a végpont lehetővé teszi egy új program létrehozását. A kérésben meg kell adni a programhoz kapcsolódó adatokat, köztük az edző azonosítóját is.
+
+== Műveletek
+
+=== Validáció
+
+- A megadott trainerId alapján léteznie kell edzőnek az adatbázisban.
+- A startTime értékének korábbinak kell lennie, mint az endTime.
+- Validációs hiba esetén a folyamat megszakad, és hibaüzenet kerül visszaküldésre.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott azonosítóhoz nem tartozik edző
+| TRAINER_NOT_FOUND
+| 404
+
+| Az időintervallum érvénytelen (endTime < startTime)
+| INVALID_INPUT
+| 400
+
+|===
+
+=== A folyamat lépései
+
+1) A trainerId alapján az edző lekérdezése az adatbázisból.
+
+2) A bemeneti DTO (ProgramSave) konvertálása entitássá (Program).
+
+3) Az entitás elmentése az adatbázisba.
+
+4) A létrehozott entitás konvertálása válasz DTO-vá (ProgramRead), és annak visszaküldése a kliensnek.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Érték
+
+| id
+| program.id
+
+| trainer
+| program.trainer (id, name)
+
+| startTime
+| program.startTime
+
+| endTime
+| program.endTime
+
+| price
+| program.price
+
+| capacity
+| program.capacity
+
+| programType
+| program.programType
+
+| status
+| program.status
+
+|===
+
+link:interfaces-program.adoc[Vissza]

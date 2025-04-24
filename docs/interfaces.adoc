@@ -1,0 +1,16 @@
+= Interfészek
+
+* link:interfaces/interfaces-trainer.adoc[Edző interfészek]
+
+* link:interfaces/interfaces-client.adoc[Kliens interfészek]
+
+* link:interfaces/interfaces-blog.adoc[Blog interfészek]
+
+* link:interfaces/interfaces-program.adoc[Program interfészek]
+
+* link:interfaces/interfaces-pc.adoc[Program-Kliens interfészek]
+
+* link:interfaces/interfaces-auth.adoc[Autentikációs interfészek]
+
+
+link:system-plan.adoc[Vissza]

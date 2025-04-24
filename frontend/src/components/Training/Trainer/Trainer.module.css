@@ -1,0 +1,132 @@
+/* Trainer.module.css */
+.calendar {
+    padding: 70px 15px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 60px);
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.calendarWeek {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    position: sticky;
+    top: 60px;
+    background-color: #f5f5f5;
+    z-index: 10;
+}
+
+.program {
+    text-align: center;
+    padding: 15px;
+    min-width: 150px;
+    min-height: 80px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fffcfc;
+}
+
+
+.calendarWeek h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.programOnDay {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.programOnDay p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.dates {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.dates div {
+    margin-right: 8px;
+}
+
+.buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.buttons button {
+    width: 48px;
+    height: 48px;
+}
+
+.programIcons svg:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .calendar {
+        padding: 60px 10px 10px;
+        max-width: 100%;
+        min-height: calc(100vh - 50px);
+        margin: 0;
+    }
+
+    .calendarWeek {
+        padding: 0 5px;
+        top: 50px;
+    }
+
+    .program {
+        padding: 10px;
+        min-width: 100%;
+        min-height: 60px;
+    }
+
+    .calendarWeek h3 {
+        font-size: 14px;
+    }
+
+    .programOnDay p {
+        font-size: 12px;
+    }
+
+    .dates {
+        margin: 8px 0;
+        font-size: 12px;
+    }
+
+    .buttons {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .buttons button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 769px) {
+    .calendar {
+        padding: 80px 20px 20px;
+    }
+    .program {
+        padding: 20px;
+    }
+}

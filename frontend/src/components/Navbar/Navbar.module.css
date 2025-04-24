@@ -1,0 +1,326 @@
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    height: 60px;
+    background-color: #2f4f4f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    color: #f2f2f2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.logo svg {
+    font-size: 2rem;
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #f2f2f2;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.pageItem {
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.pageItem:hover {
+    color: #b0bec5;
+}
+
+.loginButton {
+    padding: 8px 16px !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #ffffff !important;
+    color: #2f4f4f !important;
+    border-radius: 4px;
+}
+
+.menuButton {
+    padding: 8px !important;
+    color: #f2f2f2 !important;
+    background: none !important;
+}
+
+.menuButton:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.mobileMenuToggle {
+    display: none;
+    color: #f2f2f2;
+    cursor: pointer;
+}
+
+.mobileMenuToggle svg {
+    font-size: 2rem;
+}
+
+/* Dropdown */
+.dropdown {
+    padding: 10px;
+}
+
+.dropdownHead {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 16px;
+}
+
+.dropdownMenu {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.userType {
+    padding: 8px 16px;
+    color: #616161;
+}
+
+/* Modal */
+.modalContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    margin: 80px auto 0;
+    padding: 20px;
+    border-radius: 12px;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.icon {
+    font-size: 2.5rem !important;
+    color: #2f4f4f;
+}
+
+.nameWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.informations {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 0;
+}
+
+.info h4 {
+    min-width: 100px;
+    margin: 0;
+    font-weight: 600;
+    color: #424242;
+    font-size: 14px;
+}
+
+.info span {
+    font-size: 14px;
+    color: #616161;
+}
+
+.editInputs {
+    width: 100%;
+    max-width: 200px;
+}
+
+.editButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.editButton svg {
+    cursor: pointer;
+    color: #757575;
+    font-size: 1.25rem;
+}
+
+.editButton svg:hover {
+    color: #2f4f4f;
+}
+
+.deleteButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.deleteButton button {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+    .nav {
+        padding: 0 15px;
+        height: 50px;
+    }
+
+    .logo svg {
+        font-size: 1.75rem;
+    }
+
+    .mobileMenuToggle {
+        display: flex;
+    }
+
+    .pages {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: #2f4f4f;
+        padding: 10px 0;
+        gap: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .mobileMenuOpen {
+        display: flex;
+    }
+
+    .pageItem {
+        padding: 12px 20px;
+        font-size: 1.125rem;
+        text-align: center;
+    }
+
+    .loginButton {
+        margin: 10px 20px !important;
+        width: calc(100% - 40px);
+    }
+
+    .menuButton {
+        margin: 0 !important;
+    }
+
+    .dropdownMenu {
+        width: 100%;
+        max-width: 300px;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .modalContainer {
+        width: 95%;
+        margin: 60px auto 0;
+        padding: 15px;
+    }
+
+    .modalHeader {
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .icon {
+        font-size: 2rem !important;
+    }
+
+    .nameWrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .informations {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .info h4 {
+        min-width: 80px;
+        font-size: 12px;
+    }
+
+    .info span {
+        font-size: 12px;
+    }
+
+    .editInputs {
+        max-width: 100%;
+    }
+
+    .editButton {
+        gap: 6px;
+    }
+
+    .editButton svg {
+        font-size: 1rem;
+    }
+
+    .deleteButton {
+        margin-top: 15px;
+    }
+}
+
+@media (min-width: 721px) {
+    .modalContainer {
+        padding: 25px;
+    }
+
+    .modalHeader {
+        padding: 20px 25px;
+    }
+}

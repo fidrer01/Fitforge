@@ -1,0 +1,18 @@
+= Blog interfészek
+
+* link:blog-create.adoc[Blog létrehozása]
+
+* link:blog-delete.adoc[Blog törlése]
+
+* link:blog-list.adoc[Blogok listázása]
+
+* link:blog-read.adoc[Blog lekérdezése]
+
+* link:blog-read-image.adoc[Blog képének lekérdezése]
+
+* link:blog-update.adoc[Blog módosítása]
+
+* link:blog-upload-picture.adoc[Blog képének frissítése]
+
+
+link:../interfaces.adoc[Vissza]

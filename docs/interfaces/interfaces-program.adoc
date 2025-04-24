@@ -1,0 +1,14 @@
+= Program interfészek
+
+* link:program-create.adoc[Program létrehozása]
+
+* link:program-delete.adoc[Program törlése]
+
+* link:program-list.adoc[Programok listázása]
+
+* link:program-read.adoc[Program lekérdezése]
+
+* link:program-update.adoc[Program módosítása]
+
+
+link:../interfaces.adoc[Vissza]

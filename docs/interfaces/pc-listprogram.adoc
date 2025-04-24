@@ -1,0 +1,89 @@
+= Klienshez kapcsolódó programok listázása interfész
+
+[cols="1h,3"]
+|===
+
+| Összegzés
+| Egy adott klienshez tartozó programok listázása az azonosító alapján.
+
+| Request method
+| GET
+
+| PathURL
+| /client/{id}/program-list
+
+| Params
+|
+  `id`: A kliens azonosítója, akinek a programlistáját szeretnénk lekérni.
+
+| Request body
+| -
+
+| Response
+| Az adott klienshez csatlakozott programok listája ProgramRead DTO formátumban.
+
+|===
+
+== Leírás
+Ez a végpont visszaadja azokat a programokat, amelyekhez egy adott kliens már csatlakozott. A válaszban a programok adatai szerepelnek ProgramRead DTO formátumban.
+
+== Műveletek
+
+=== Validáció
+
+- A kliens létezését a clientRepository.existsById() segítségével ellenőrzi.
+- Ha a kliens nem található, a rendszer ClientNotFoundException kivételt dob.
+
+[cols="4,2,1"]
+|===
+
+| Hiba oka | Üzenet | Status code
+
+| A megadott kliens nem található
+| CLIENT_NOT_FOUND
+| 404
+
+|===
+
+=== A folyamat lépései
+
+1) Ellenőrzés, hogy az adott id-val létezik-e kliens.
+
+2) A klienshez tartozó programok lekérdezése a findProgramsByClientId() metódussal.
+
+3) A program entitások konvertálása ProgramRead DTO listává.
+
+4) A lista visszaküldése válaszként.
+
+[cols="3,4"]
+|===
+
+| Response paraméter | Jelentés
+
+| id
+| A program azonosítója
+
+| trainer
+| A programot vezető edző (id, name)
+
+| startTime
+| A program kezdési időpontja (ISO formátumban)
+
+| endTime
+| A program befejezési időpontja (ISO formátumban)
+
+| price
+| A program ára
+
+| capacity
+| A program befogadóképessége
+
+| programType
+| A program típusa (pl. STRENGTH_TRAINING)
+
+| status
+| A program státusza (UPCOMING, ACTIVE, stb.)
+
+|===
+
+link:interfaces-pc.adoc[Vissza]
