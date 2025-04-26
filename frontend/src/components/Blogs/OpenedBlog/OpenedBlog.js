@@ -42,8 +42,8 @@ function OpenedBlog() {
                 <h1 className={styles.moreBlogsTitle}>Hasonló blogok</h1>
                 <div className={styles.blogGrid}>
                     {blogs.length > 1 ? (
-                        blogs.map((moreBlog) => {
-                            if (moreBlog.id !== blog.id) {
+                        blogs.map((moreBlog,index) => {
+                            if (moreBlog.id !== blog.id && index<5) {
                                 const moreBlogImage =  `/blog/image/${moreBlog.id}` || ' ' ;
                                 return (
                                     <div key={moreBlog.id} className={styles.blog}>
