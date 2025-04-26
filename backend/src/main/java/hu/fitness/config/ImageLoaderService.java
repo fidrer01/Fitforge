@@ -35,7 +35,16 @@ public class ImageLoaderService {
 
     private void loadBlogImaes() {
         Map<Integer, String> blogImageMap = Map.of(
-                1,"blog1.jpg"
+                1,"blog1.jpg",
+                2,"blog2.jpg",
+                3,"blog3.jpg",
+                4,"blog4.jpg",
+                5,"blog5.jpg",
+                6,"blog6.jpg",
+                7,"blog7.jpg",
+                8,"blog8.jpg",
+                9,"blog9.jpg",
+                10,"blog10.jpg"
         );
 
         for (Map.Entry<Integer, String> entry : blogImageMap.entrySet()) {
@@ -68,7 +77,16 @@ public class ImageLoaderService {
     private void loadTrainerImages() {
         Map<Integer, String> trainerImageMap = Map.of(
                 101, "edzo1.jpg",
-                102, "edzo2.jpg"
+                102, "noiedzo4.jpg",
+                103,"edzo2.jpg",
+                104,"noiedzo2.jpg",
+                105,"edzo3.jpg",
+                106,"noiedzo3.jpg",
+                107,"edzo4.jpg",
+                108,"noiedzo1.jpg",
+                109,"edzo5.jpg",
+                110,"noiedzo5.jpg"
+
         );
 
         for (Map.Entry<Integer, String> entry : trainerImageMap.entrySet()) {
