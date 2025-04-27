@@ -75,13 +75,18 @@ function LandingPage() {
         }
     };
 
-    const formatQualification = (text) => {
-        return text
-            .toLowerCase()
-            .replace(/_/g, ' ')
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
+    const formatQualification = (qualification) => {
+        const qualificationMap = {
+            PERSONAL_TRAINER: 'Személyi edző',
+            FITNESS_INSTRUCTOR: 'Fitnesz oktató',
+            PILATES_INSTRUCTOR: 'Pilates oktató',
+            CROSSFIT_COACH: 'Crossfit edző',
+            TRX_TRAINER: 'TRX edző',
+            POUND_TRAINER: 'Pound edző',
+            OTHER: 'Egyéb'
+        };
+
+        return qualificationMap[qualification] || qualification;
     };
 
     const formatPhoneNumber = (phoneNumber) => {
