@@ -69,4 +69,4 @@ A backend tesztelés a fitness API végpontok funkcionalitását ellenőrzi JMet
 A táblázatok a backend API alapvető funkcionalitásait fedik le, beleértve a CRUD műveleteket, hibakezelést és hitelesítési folyamatokat.
 
 
-link:../application-documentation.adoc[Vissza]
+link:application-documentation.adoc[Vissza]
