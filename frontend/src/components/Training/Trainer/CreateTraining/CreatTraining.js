@@ -33,7 +33,7 @@ function CreateTraining({ close }) {
             endTime: formatDateTime(data.date.$d, data.endTime.$d),
             price: data.price,
             capacity: data.capacity,
-            programType: data.programType.toUpperCase(),
+            programType: data.programType,
         };
 
         try {
@@ -62,7 +62,15 @@ function CreateTraining({ close }) {
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     };
 
-    const programTypes = ["Strength_Training", "B_Fit", "Pilates", "Crossfit", "TRX", "Functional_Training", "Spinning"];
+    const programTypes = [
+        { value: 'STRENGTH_TRAINING', label: 'Erőnléti edzés' },
+        { value: 'B_FIT', label: 'B edzés' },
+        { value: 'PILATES', label: 'Pilates edzés' },
+        { value: 'CROSSFIT', label: 'Crossfit edzés' },
+        { value: 'TRX', label: 'TRX edzés' },
+        { value: 'FUNCTIONAL_TRAINING', label: 'Funkcionális edzés' },
+        { value: 'SPINNING', label: 'Spinning edzés' },
+    ];
 
     return (
         <div className={styles.container}>
@@ -161,14 +169,20 @@ function CreateTraining({ close }) {
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Select
+                                        variant="outlined"
+                                        fullWidth
                                         className={styles.textFields}
-                                        aria-label="Program Típus"
-                                        size="small"
                                         {...field}
+                                        error={!!error}
+                                        displayEmpty
+                                        renderValue={(selected) => {
+                                            if (!selected) return <em>Típus kiválasztása</em>;
+                                            return programTypes.find(type => type.value === selected)?.label;
+                                        }}
                                     >
-                                        {programTypes.map((type, key) => (
-                                            <MenuItem key={key} value={type}>
-                                                {type}
+                                        {programTypes.map((type) => (
+                                            <MenuItem key={type.value} value={type.value}>
+                                                {type.label}
                                             </MenuItem>
                                         ))}
                                     </Select>

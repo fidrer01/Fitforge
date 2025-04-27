@@ -40,7 +40,7 @@ function EditTraining({ program, close }) {
             endTime: formatDateTime(data.date.$d, data.endTime.$d),
             price: data.price,
             capacity: data.capacity,
-            programType: data.programType.toUpperCase()
+            programType: data.programType
         };
 
         try {
@@ -68,7 +68,15 @@ function EditTraining({ program, close }) {
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     };
 
-    const programTypes = ["Strength_Training", "B_Fit", "Pilates", "Crossfit", "TRX", "Functional_Training", "Spinning"];
+    const programTypes = [
+        { value: 'STRENGTH_TRAINING', label: 'Erőnléti edzés' },
+        { value: 'B_FIT', label: 'B edzés' },
+        { value: 'PILATES', label: 'Pilates edzés' },
+        { value: 'CROSSFIT', label: 'Crossfit edzés' },
+        { value: 'TRX', label: 'TRX edzés' },
+        { value: 'FUNCTIONAL_TRAINING', label: 'Funkcionális edzés' },
+        { value: 'SPINNING', label: 'Spinning edzés' },
+    ];
 
     return (
         <div className={styles.container}>
@@ -123,18 +131,28 @@ function EditTraining({ program, close }) {
                         <Controller
                             name="programType"
                             control={control}
-                            render={({ field }) => (
-                                <Select
-                                    className={styles.textFields}
-                                    aria-label="Program Típus"
-                                    {...field}
-                                >
-                                    {programTypes.map((type, key) => (
-                                        <MenuItem key={key} value={type.toUpperCase()}>
-                                            {type}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Select
+                                        variant="outlined"
+                                        fullWidth
+                                        className={styles.textFields}
+                                        {...field}
+                                        error={!!error}
+                                        displayEmpty
+                                        renderValue={(selected) => {
+                                            if (!selected) return <em>Típus kiválasztása</em>;
+                                            return programTypes.find(type => type.value === selected)?.label;
+                                        }}
+                                    >
+                                        {programTypes.map((type) => (
+                                            <MenuItem key={type.value} value={type.value}>
+                                                {type.label}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                    {error && <span className={styles.error}>{error.message}</span>}
+                                </>
                             )}
                         />
                         <Button type="submit" variant="contained" className={styles.submitButton}>
