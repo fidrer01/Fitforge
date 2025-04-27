@@ -298,7 +298,7 @@ Megvizsgálja, szerepel-e benne a megadott program.
 
 === Programok listázása felület
 
-image::../images/image-2025-04-24-15-26-41-864.png[]
+image::../images/image-2025-04-27-11-50-18-921.png[]
 
 ==== A felületen lévő mezők
 [cols="1,1,1,1,1"]

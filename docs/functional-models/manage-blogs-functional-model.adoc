@@ -219,8 +219,7 @@ image::diagrams/blog.png[]
 
 === Blogok listázása felület
 
-image::../images/image-2025-04-24-15-54-30-469.png[]
-
+image::../images/image-2025-04-27-11-45-09-858.png[]
 ==== A felületen lévő mezők
 
 [cols="1,1,1,1,1"]
