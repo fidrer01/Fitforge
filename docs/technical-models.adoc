@@ -1,11 +1,19 @@
 = Technikai modellek
 
-link:technical-models/manage-trainers-technical-model.adoc[Edzők kezelése]
 
-link:technical-models/manage-clients-technical-model.adoc[Kliensek kezelése]
+* link:technical-models/database-structure.adoc[Adatbázis felépítése]
 
-link:technical-models/manage-blogs-technical-model.adoc[Blogok kezelése]
+* link:technical-models/manage-trainers-technical-model.adoc[Edzők kezelése]
 
-link:technical-models/manage-programs-technical-model.adoc[Programok kezelése]
+* link:technical-models/manage-clients-technical-model.adoc[Kliensek kezelése]
+
+* link:technical-models/manage-blogs-technical-model.adoc[Blogok kezelése]
+
+* link:technical-models/manage-programs-technical-model.adoc[Programok kezelése]
+
+* link:technical-models/manage-program-client-technical-model.adoc[Programok és kliensek kezelése]
+
+* link:technical-models/manage-users-technical-model.adoc[Felhasználók kezelése]
+
 
 link:system-plan.adoc[Vissza]

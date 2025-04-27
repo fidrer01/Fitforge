@@ -1,0 +1,153 @@
+= Programok és Ügyfelek Kezelése - Technikai Modell
+
+== Használati eset realizációk
+
+=== Ügyfél felvétele programba
+Használati eset azonosító: UC_PROG_AddClient
+
+Az adminisztrátor:
+- Megnyitja a program részletek oldalt
+- Kiválaszt egy ügyfelet a listából
+- Megnyomja a "Felvétel programba" gombot
+
+A rendszer meghívja:
+- POST /api/program/{programId}/clients/{clientId} végpontot
+
+[cols="1,2"]
+|===
+|Bemeneti paraméter|Érték
+|programId|A program azonosítója
+|clientId|Az ügyfél azonosítója
+|===
+
+=== Ügyfél eltávolítása programból
+Használati eset azonosító: UC_PROG_RemoveClient
+
+Az adminisztrátor:
+- Megnyitja a program részletek oldalt
+- Kiválaszt egy ügyfelet a listából
+- Megnyomja az "Eltávolítás" gombot
+
+A rendszer meghívja:
+- DELETE /api/program/{programId}/clients/{clientId} végpontot
+
+[cols="1,2"]
+|===
+|Bemeneti paraméter|Érték
+|programId|A program azonosítója
+|clientId|Az ügyfél azonosítója
+|===
+
+
+=== Programra jelentkezett ügyfelek száma
+Használati eset azonosító: UC_PROG_CountClients
+
+A felhasználó:
+- Megnyitja a program részletek oldalt
+
+A rendszer meghívja:
+- GET /api/program/{id}/client-count végpontot
+
+[cols="1,2"]
+|===
+|Bemeneti paraméter|Érték
+|id|A program azonosítója
+|===
+
+=== Programhoz tartozó ügyfelek listája
+Használati eset azonosító: UC_PROG_ListClients
+
+Az adminisztrátor:
+- Megnyitja a program részletek oldalt
+- Megnyomja a "Jelentkezett ügyfelek" gombot
+
+A rendszer meghívja:
+- GET /api/program/{id}/client-list végpontot
+
+[cols="1,2"]
+|===
+|Bemeneti paraméter|Érték
+|id|A program azonosítója
+|===
+
+
+
+=== Ügyfél korábbi részvételének ellenőrzése
+Használati eset azonosító: UC_PROG_WasOnProgram
+
+A rendszer:
+- Ellenőrzi, hogy az ügyfél korábban részt vett-e a programon
+
+A rendszer meghívja:
+- GET /api/program/{programId}/clients/{clientId} végpontot
+
+[cols="1,2"]
+|===
+|Bemeneti paraméter|Érték
+|programId|A program azonosítója
+|clientId|Az ügyfél azonosítója
+|===
+
+=== Ügyfél programjainak száma
+Használati eset azonosító: UC_CLIENT_CountPrograms
+
+A felhasználó:
+- Megnyitja az ügyfél profil oldalt
+
+A rendszer meghívja:
+- GET /api/client/{id}/program-count végpontot
+
+[cols="1,2"]
+|===
+|Bemeneti paraméter|Érték
+|id|Az ügyfél azonosítója
+|===
+
+
+=== Ügyfél programjainak listája
+Használati eset azonosító: UC_CLIENT_ListPrograms
+
+Az adminisztrátor:
+- Megnyitja az ügyfél profil oldalt
+- Megnyomja a "Programok" gombot
+
+A rendszer meghívja:
+- GET /api/client/{id}/program-list végpontot
+
+[cols="1,2"]
+|===
+|Bemeneti paraméter|Érték
+|id|Az ügyfél azonosítója
+|===
+
+
+
+== Technikai megvalósítás
+
+=== Adatbázis kapcsolatok
+- Many-to-Many kapcsolat Program és Client entitások között
+- Köztes tábla automatikusan kezelve a JPA által
+
+=== Főbb műveletek
+1. Ügyfél felvétele programba:
+- Ellenőrzi, hogy létezik-e a program és ügyfél
+- Kétirányú kapcsolat frissítése
+- Mindkét entitás mentése
+
+2. Ügyfél eltávolítása programból:
+- Ellenőrzi, hogy létezik-e a program és ügyfél
+- Kétirányú kapcsolat frissítése
+- Mindkét entitás mentése
+
+3. Listázó műveletek:
+- Entitások konvertálása DTO-kká
+- Űrlapázott válasz visszaküldése
+
+
+== Érintett komponensek
+
+Frontend: vizsgaremekFront ← → Backend: fitness
+
+
+
+link:../technical-models.adoc[Vissza a technikai áttekintéshez]

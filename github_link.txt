@@ -1,0 +1,6 @@
+Main github:
+https://github.com/fidrer01/Fitforge
+
+Fejlesztésre használt githubok:
+https://github.com/Gemii1/vizsgaremekFront
+https://github.com/Gemii1/vizsgaremekBack

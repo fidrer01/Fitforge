@@ -28,14 +28,14 @@ A response visszatér az edzésprogramok listájával. Mapping:
 |===
 |Interfész output paraméter| felhasználás
 
-|ProgramListItem[].id | Nem jelenik meg. A frontend a megtekintéshez használja.
-|ProgramListItem[].coachName | Edző neve oszlop |
-ProgramListItem[].start | Kezdés oszlop |
-ProgramListItem[].end | Befejezés oszlop |
-ProgramListItem[].price | Ár oszlop |
-ProgramListItem[].capacity | Kapacitás oszlop |
-ProgramListItem[].type | Típus oszlop |
-ProgramListItem[].status | Státusz oszlop
+|id | Nem jelenik meg. A frontend a megtekintéshez használja.
+|trainerName | Edző neve oszlop |
+start | Kezdés oszlop |
+end | Befejezés oszlop |
+price | Ár oszlop |
+capacity | Kapacitás oszlop |
+type | Típus oszlop |
+status | Státusz oszlop
 |===
 
 === Program megtekintése
@@ -65,7 +65,7 @@ A response visszatér a program részletes adataival:
 |Interfész output paraméter| felhasználás
 
 |id |Nem jelenik meg
-|coachName | Edző neve címke
+|trainerName | Edző neve címke
 |start | Kezdés címke
 |end | Befejezés címke
 |price | Ár címke
@@ -91,7 +91,7 @@ A rendszer meghívja a
 |===
 |Interfész input paraméter| érték
 
-|coachId | Edző azonosítója
+|trainerId | Edző azonosítója
 |start | Kezdés dátuma
 |end | Befejezés dátuma
 |price | Ár |capacity

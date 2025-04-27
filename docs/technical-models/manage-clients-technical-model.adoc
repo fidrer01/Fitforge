@@ -31,19 +31,19 @@ A response visszatér a kliensek listájával. Mapping:
 
 |Interfész output paraméter| felhasználás
 
-|ClientListItem[].id |Nem jelenik meg. A frontend a megtekintéshez használja.
+|id |Nem jelenik meg. A frontend a megtekintéshez használja.
 
-|ClientListItem[].name |Kliens neve oszlop
+|name |Kliens neve oszlop
 
-|ClientListItem[].birthDate |Kliens születési dátuma oszlop
+|birthDate |Kliens születési dátuma oszlop
 
-|ClientListItem[].gender |Kliens neme oszlop
+|gender |Kliens neme oszlop
 Felhasználás:
 MALE -> Male
 FEMALE -> Female
 OTHER -> Other
 
-|ClientListItem[].phoneNumber |Kliens telefonszáma oszlop
+|phoneNumber |Kliens telefonszáma oszlop
 |===
 
 === Kliens megtekintése

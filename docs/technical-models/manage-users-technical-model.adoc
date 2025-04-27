@@ -1,0 +1,158 @@
+= Hitelesítés és Engedélyezés - Technikai Modell
+
+== Használati eset realizációk
+
+=== Bejelentkezés
+Használati eset azonosító: UC_AUTH_Login
+
+A felhasználó:
+- Eléri a bejelentkezési oldalt
+- Kitölti az email és jelszó mezőket
+- Megnyomja a "Bejelentkezés" gombot
+
+A rendszer meghívja:
+- POST /api/auth/login végpontot
+
+[cols="1,2"]
+|===
+|Bemenet|Érték
+|email|A felhasználó email címe
+|password|A felhasználó jelszava
+|===
+
+
+
+=== Aktuális felhasználó adatainak lekérése
+Használati eset azonosító: UC_AUTH_GetMe
+
+A felhasználó:
+- Be van jelentkezve
+- Megnyitja a profil oldalt
+
+A rendszer meghívja:
+- GET /api/auth/me végpontot
+
+[cols="1,2"]
+|===
+|Bemenet|Érték
+|Authorization header|Bearer [JWT token]
+|===
+
+
+
+=== Fiók törlése
+Használati eset azonosító: UC_AUTH_DeleteMe
+
+A felhasználó:
+- Be van jelentkezve
+- Megnyitja a fiókbeállításokat
+- Megnyomja a "Fiók törlése" gombot
+
+A rendszer meghívja:
+- DELETE /api/auth/delete végpontot
+
+[cols="1,2"]
+|===
+|Bemenet|Érték
+|Authorization header|Bearer [JWT token]
+|===
+
+=== Felhasználó törlése ID alapján (Admin)
+Használati eset azonosító: UC_AUTH_DeleteUser
+
+Az admin:
+- Rendelkezik DELETE_USER jogosultsággal
+- Megnyitja a felhasználókezelőt
+- Kiválaszt egy felhasználót törlésre
+
+A rendszer meghívja:
+- DELETE /api/auth/delete/{id} végpontot
+
+[cols="1,2"]
+|===
+|Bemenet|Érték
+|id|A törlendő felhasználó azonosítója
+|Authorization header|Bearer [JWT token]
+|===
+
+
+
+=== Ügyfél regisztráció
+Használati eset azonosító: UC_AUTH_RegisterClient
+
+A felhasználó:
+- Megnyitja a regisztrációs oldalt
+- Kiválasztja az "Ügyfélként regisztrálok" lehetőséget
+- Kitölti az adatokat
+- Elküldi az űrlapot
+
+A rendszer meghívja:
+- POST /api/auth/registerClient végpontot
+
+[cols="1,2"]
+|===
+|Bemenet|Érték
+|email|Az email cím
+|password|A jelszó
+|name|A teljes név
+|birthDate|Születési dátum (éééé-hh-nn)
+|gender|Nem (MALE/FEMALE/OTHER)
+|phone|Telefonszám
+|===
+
+
+
+=== Edző regisztráció
+Használati eset azonosító: UC_AUTH_RegisterTrainer
+
+A felhasználó:
+- Megnyitja a regisztrációs oldalt
+- Kiválasztja az "Edzőként regisztrálok" lehetőséget
+- Kitölti az adatokat
+- Elküldi az űrlapot
+
+A rendszer meghívja:
+- POST /api/auth/registerTrainer végpontot
+
+[cols="1,2"]
+|===
+|Bemenet|Érték
+|email|Az email cím
+|password|A jelszó
+|name|A teljes név
+|phoneNumber|Telefonszám
+|birthDate|Születési dátum (éééé-hh-nn)
+|gender|Nem (MALE/FEMALE/OTHER)
+|qualification|Képzettség
+|===
+
+
+
+== Technikai megvalósítás
+
+=== Hitelesítési folyamat
+1. Bejelentkezési kérelem fogadása email/jelszó párossal
+2. AuthenticationManager hitelesíti a hitelesítő adatokat
+3. Sikeres hitelesítés esetén:
+   * AuthService lekéri a felhasználó adatait
+   * PermissionCollector összegyűjti a jogosultságokat
+   * JWTTokenProvider generál tokent
+   * Token hozzáadás a válasz fejlécekhez
+   * Felhasználói adatok visszaküldése a válaszban
+
+=== Biztonsági megfontolások
+- Minden végpont (kivéve bejelentkezés/regisztráció) JWT tokent igényel
+- Jelszó titkosítás BCryptPasswordEncoder-rel
+- Szerepköralapú hozzáférés:
+  * DELETE /api/auth/delete/{id} DELETE_USER jogosultságot igényel
+  * ADMIN felhasználók nem törölhetők
+
+
+
+== Érintett komponensek
+
+Frontend: vizsgaremekFront ← → Backend: fitness
+
+
+
+link:../technical-models.adoc[Vissza a technikai áttekintéshez]

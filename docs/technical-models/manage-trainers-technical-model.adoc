@@ -29,17 +29,17 @@ A response visszatér az edzők listájával. Mapping:
 |===
 |Interfész output paraméter| felhasználás
 
-|TrainerListItem[].id |Nem jelenik meg. A frontend a megtekintéshez használja.
-|TrainerListItem[].name |Edző neve oszlop
-|TrainerListItem[].birthDate |Edző születési dátuma oszlop
-|TrainerListItem[].gender |Edző neme oszlop
+|id |Nem jelenik meg. A frontend a megtekintéshez használja.
+|name |Edző neve oszlop
+|birthDate |Edző születési dátuma oszlop
+|gender |Edző neme oszlop
 Felhasználás:
 MALE → Male
 FEMALE → Female
 OTHER → Other
-|TrainerListItem[].qualification |Edző végzettsége oszlop
-|TrainerListItem[].phoneNumber |Edző telefonszáma oszlop
-|TrainerListItem[].rating |Értékelés oszlop
+|qualification |Edző végzettsége oszlop
+|phoneNumber |Edző telefonszáma oszlop
+|rating |Értékelés oszlop
 |===
 
 === Edző megtekintése

@@ -28,10 +28,10 @@ A response visszatér a blogok listájával. Mapping:
 |===
 |Interfész output paraméter| felhasználás
 
-|BlogListItem[].id |Nem jelenik meg. A frontend a megtekintéshez használja.
-|BlogListItem[].title |Cím oszlop
-|BlogListItem[].trainerName |Edző oszlop
-|BlogListItem[].headerText |Fejléc szöveg oszlop
+|id |Nem jelenik meg. A frontend a megtekintéshez használja.
+|title |Cím oszlop
+|trainerName |Edző oszlop
+|headerText |Fejléc szöveg oszlop
 |===
 
 === Blog megtekintése
