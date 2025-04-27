@@ -46,7 +46,6 @@
     }
 }
 
-/* Larger screens */
 @media (min-width: 769px) {
     .container {
         width: 400px;

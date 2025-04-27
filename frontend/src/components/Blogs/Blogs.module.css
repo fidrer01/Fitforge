@@ -150,7 +150,6 @@
     text-align: center;
 }
 
-/* Reszponzív dizájn */
 @media (max-width: 960px) {
     .container {
         padding: clamp(15px, 3vw, 30px);

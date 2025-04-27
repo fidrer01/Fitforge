@@ -111,7 +111,6 @@
     box-shadow: 0 6px 16px rgba(2, 136, 209, 0.4) !important;
 }
 
-/* Reszponzív dizájn */
 @media (max-width: 720px) {
     .login {
         padding: 15px;

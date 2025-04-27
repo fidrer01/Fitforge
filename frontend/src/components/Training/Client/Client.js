@@ -31,7 +31,7 @@ function Client() {
         const offset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
         start.setDate(start.getDate() + offset);
         start.setHours(0, 0, 0, 0);
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 7; i++) {
             const day = new Date(start);
             day.setDate(start.getDate() + i);
             days.push(day);
@@ -65,7 +65,7 @@ function Client() {
         const programDate = new Date(program.startTime);
         programDate.setHours(0, 0, 0, 0);
         const weekStart = new Date(weekDays[0]);
-        const weekEnd = new Date(weekDays[4]);
+        const weekEnd = new Date(weekDays[6]);
         const isInWeek = programDate >= weekStart && programDate <= weekEnd;
         return isInWeek;
     });
@@ -226,12 +226,12 @@ function Client() {
                 <IconButton onClick={handlePrevWeek}>
                     <ArrowBackIcon />
                 </IconButton>
-                <h3>{`${weekDays[0].toLocaleDateString('hu-HU')} - ${weekDays[4].toLocaleDateString('hu-HU')}`}</h3>
+                <h3>{`${weekDays[0].toLocaleDateString('hu-HU')} - ${weekDays[6].toLocaleDateString('hu-HU')}`}</h3>
                 <IconButton onClick={handleNextWeek}>
                     <ArrowForwardIcon />
                 </IconButton>
             </div>
-            <Grid container rowSpacing={1} spacing={2} columns={{ xs: 1, sm: 2, md: 5 }}>
+            <Grid container rowSpacing={1} spacing={2} columns={{ xs: 1, sm: 2, lg: 7 }}>
                 {weekDays.map((date) => {
                     const day = formatDate(date);
                     return (
